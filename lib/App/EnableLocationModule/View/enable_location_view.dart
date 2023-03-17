@@ -1,7 +1,5 @@
 import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:redseaboats/Common/AppButton/app_button.dart';
@@ -24,7 +22,7 @@ class EnableLocationView extends StatelessWidget {
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30),
               height: SizeConfig.heightMultiplier * 50,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 image: DecorationImage(image: AssetImage('assets/onBoarding/loc.png'), fit: BoxFit.fitWidth)
               ),
             ),

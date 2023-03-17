@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:redseaboats/App/SplashModule/View/splash_view.dart';
 import 'package:redseaboats/RoutesAndBindings/app_pages.dart';
 import 'package:redseaboats/RoutesAndBindings/app_routes.dart';
 

@@ -32,11 +32,13 @@ class OnBoardingView extends StatelessWidget {
               itemCount: onBoardingVM.onBoardingList.length,
               itemBuilder: (context, index) {
                 return Container(
-                  padding: const EdgeInsets.symmetric( horizontal: 30),
+          padding: const EdgeInsets.symmetric( horizontal: 30),
           height: SizeConfig.heightMultiplier * 100,
           width: SizeConfig.widthMultiplier * 100,
           decoration:  BoxDecoration(
-            image: DecorationImage(image: AssetImage(onBoardingVM.onBoardingList[index].imageUrl), fit: BoxFit.cover)
+            image: DecorationImage(
+              image: AssetImage(onBoardingVM.onBoardingList[index].imageUrl,), fit: BoxFit.fill,
+              )
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
