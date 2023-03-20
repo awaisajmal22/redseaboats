@@ -1,5 +1,8 @@
 import 'package:get/get.dart';
+import 'package:redseaboats/App/BookingModule/View/booking_view.dart';
+import 'package:redseaboats/App/BookingModule/ViewModel/booking_view_model.dart';
 import 'package:redseaboats/App/BottomNavBarModule/View/navBar_view.dart';
+import 'package:redseaboats/App/ChatModule/ViewModel/chat_view_model.dart';
 
 import 'package:redseaboats/App/EnableLocationModule/View/enable_location_view.dart';
 import 'package:redseaboats/App/HomeModule/HomeDailog/View/home_dailog_view.dart';
@@ -65,6 +68,8 @@ class AppPages{
         binding: BindingsBuilder(() {
           Get.lazyPut(() => NavBarViewModel());
           Get.lazyPut(() => HomeViewModel());
+          Get.lazyPut(() => BookingViewModel());
+          Get.lazyPut(() => ChatViewModel());
         })),
         
          GetPage(
@@ -73,5 +78,6 @@ class AppPages{
       transition: Transition.fade,
       
       ),
+     
   ];
 }

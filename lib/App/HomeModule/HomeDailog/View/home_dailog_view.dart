@@ -8,6 +8,7 @@ import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 
 import '../../Home/ViewModel/home_view_model.dart';
+import 'Component/featured_Tile.dart';
 
 
 class HomeDialog extends StatelessWidget {
@@ -30,7 +31,7 @@ final homeVM = Get.find<HomeViewModel>();
             ),
             child: SizedBox(
             height: SizeConfig.heightMultiplier  * 60.3,
-            width: SizeConfig.widthMultiplier * 85,
+            width: SizeConfig.widthMultiplier * 95,
             child: Stack(
               alignment: Alignment.bottomCenter,
               children: [
@@ -42,7 +43,7 @@ final homeVM = Get.find<HomeViewModel>();
                     ),
                   
                     height: SizeConfig.heightMultiplier * 58.5,
-                    width: SizeConfig.widthMultiplier * 80,
+                    width: SizeConfig.widthMultiplier * 90,
                     child: Column(
                       children: [
                         SizedBox(
@@ -90,6 +91,7 @@ final homeVM = Get.find<HomeViewModel>();
                   child: GestureDetector(
                     onTap: (){
                       Get.back();
+                      homeVM.isDailogCheck.value = true;
                     },
                     child: Container(
                       height: 30,

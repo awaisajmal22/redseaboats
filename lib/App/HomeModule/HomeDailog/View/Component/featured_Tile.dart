@@ -27,9 +27,9 @@ Widget featuredTile({
   return GestureDetector(
     onTap: callBack,
     child: Container(
-                      margin:  EdgeInsets.only(right: index == length - 1? 0 : SizeConfig.widthMultiplier * 5.0),
+                      margin:  EdgeInsets.symmetric(horizontal:  SizeConfig.widthMultiplier * 2.0),
                       height: SizeConfig.heightMultiplier * 50,
-                      width: SizeConfig.widthMultiplier * 60,
+                      width: SizeConfig.widthMultiplier * 75,
                       decoration: BoxDecoration(
                        
                         borderRadius: BorderRadius.circular(14),
@@ -70,7 +70,7 @@ Widget featuredTile({
                               ),
                               height: SizeConfig.heightMultiplier * 5.0,
                               width: SizeConfig.widthMultiplier * 37,
-                              child: appText(text: '$discount% Discount'),
+                              child: appText(text: '$discount% Discount', fontSize: SizeConfig.textMultiplier * 2.0),
                             ),
                              Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 20),

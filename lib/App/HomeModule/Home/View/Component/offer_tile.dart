@@ -8,7 +8,7 @@ Widget offersTile({
     required String imageUrl
     }) {
     return Container(
-                  margin: EdgeInsets.only(right: index == length - 1 ? 0 : SizeConfig.widthMultiplier * 5.3),
+                  margin: EdgeInsets.only(right: SizeConfig.widthMultiplier * 5.3),
             height: SizeConfig.heightMultiplier * 11,
             width: SizeConfig.widthMultiplier * 58,
             decoration: BoxDecoration(

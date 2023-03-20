@@ -5,6 +5,9 @@
         android:label="redseaboats"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+
+    <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyCrplA0N9QdzGK7h0oqKWM76dsPZMRYEQc"/>
         <activity
             android:name=".MainActivity"
             android:exported="true"

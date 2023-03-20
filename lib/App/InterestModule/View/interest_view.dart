@@ -53,11 +53,36 @@ class InterestView extends StatelessWidget {
                 crossAxisCount: 2
                 ), 
               itemBuilder: (context, index){
-                return Container(
+                return Obx(
+                  ()=> interestTile(
+                  voidCallback: (){
+                    interestVM.interestList[index].check.value = !interestVM.interestList[index].check.value;
+                  },
+                  title: interestVM.interestList[index].title,
+                  imageUrl: interestVM.interestList[index].imageUrl,
+                  check: interestVM.interestList[index].check.value
+                
+                  ),
+                );
+              }))
+          ],
+        )),
+    );
+  }
+
+  GestureDetector interestTile({
+    required VoidCallback voidCallback,
+    required String title,
+    required String imageUrl,
+    required bool check
+  }) {
+    return GestureDetector(
+                onTap: voidCallback,
+                child: Container(
                   padding: EdgeInsets.only(left: 16, right: 10, top: 11, bottom: 16),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(14),
-                    image: DecorationImage(image: NetworkImage(interestVM.interestList[index].imageUrl), fit: BoxFit.cover)
+                    image: DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover)
                   ),
                  child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,21 +90,13 @@ class InterestView extends StatelessWidget {
                   children: [
                     Align(
                       alignment: Alignment.centerRight,
-                      child: GestureDetector(
-                        onTap: (){
-                          interestVM.interestList[index].check.value = !interestVM.interestList[index].check.value;
-                        },
-                        child: Obx(()=> Image(image: AssetImage(interestVM.interestList[index].check.value == false ? 'assets/interest/uncheck.png': 'assets/interest/check.png'),
-                        height: SizeConfig.imageSizeMultiplier * 6.0,width: SizeConfig.imageSizeMultiplier * 6.0, )),
-                      ),
+                      child:  Image(image: AssetImage(check == false ? 'assets/interest/uncheck.png': 'assets/interest/check.png'),
+                      height: SizeConfig.imageSizeMultiplier * 6.0,width: SizeConfig.imageSizeMultiplier * 6.0, ),
                     ),
-                    appText(text: interestVM.interestList[index].title, fontSize: SizeConfig.textMultiplier * 1.75)
+                    appText(text: title, fontSize: SizeConfig.textMultiplier * 1.75)
                   ],
                  ),
-                );
-              }))
-          ],
-        )),
-    );
+                ),
+              );
   }
 }

@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 
 class HomeDialogModel{
+  final String imageUrl;
   final String title;
   final String discount;
   final String subtitle;
@@ -9,6 +10,7 @@ class HomeDialogModel{
   final String price;
   RxBool favorite;
   HomeDialogModel({
+    required this.imageUrl,
     required this.title,
     required this.discount,
     required this.subtitle,

@@ -39,6 +39,8 @@ dependencies:
   delayed_display: ^2.0.0
   font_awesome_flutter: ^10.4.0
   flutter_rating_bar: ^4.0.1
+  lottie: ^2.3.0
+  google_maps_flutter: ^2.2.5
 
 dev_dependencies:
   flutter_test:
@@ -68,6 +70,7 @@ flutter:
     - assets/onBoarding/
     - assets/interest/
     - assets/home/icons/
+    - assets/booking/icons/
     - assets/navbar/
     - assets/home/offers/
   #   - images/a_dot_ham.jpeg

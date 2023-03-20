@@ -30,7 +30,7 @@ Widget interestTile({
   return GestureDetector(
     onTap: callBack,
     child: Container(
-                      margin:  EdgeInsets.only(right: index == length - 1? 0 : SizeConfig.widthMultiplier * 5.0),
+                      margin:  EdgeInsets.only(right: SizeConfig.widthMultiplier * 5.0),
                       height: SizeConfig.heightMultiplier * 50,
                       width: SizeConfig.widthMultiplier * 80,
                       decoration: BoxDecoration(
@@ -63,7 +63,7 @@ Widget interestTile({
                                 ),
                                 height: SizeConfig.heightMultiplier * 5.0,
                                 width: SizeConfig.widthMultiplier * 37,
-                                child: appText(text: '$discount% Discount'),
+                                child: appText(text: '$discount% Discount', fontSize: SizeConfig.textMultiplier * 2.0),
                               ),
                           ),
                           Align(
