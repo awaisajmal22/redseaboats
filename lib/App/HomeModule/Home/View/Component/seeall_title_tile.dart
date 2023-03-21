@@ -7,7 +7,8 @@ import '../../../../../../Common/SizeConfig/size_config.dart';
 
 Widget seeAllTitleTile({
     required VoidCallback seeAllCallBack,
-    required String title
+    required String title,
+    String buttonTitle = 'See All'
   }) {
     return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -18,7 +19,7 @@ Widget seeAllTitleTile({
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  appText(text: 'SeeAll', textColor: AppColor.textGrey, fontSize: 12, fontWeight: FontWeight.w400),
+                  appText(text: buttonTitle, textColor: AppColor.textGrey, fontSize: 12, fontWeight: FontWeight.w400),
                   SizedBox(
                     width: SizeConfig.widthMultiplier * 1.0,
                   ),

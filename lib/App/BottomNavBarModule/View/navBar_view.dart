@@ -8,7 +8,7 @@ import 'package:redseaboats/App/BottomNavBarModule/ViewModel/navBar_view_model.d
 import 'package:redseaboats/App/ChatModule/View/chat_view.dart';
 import 'package:redseaboats/App/HomeModule/Home/View/home_view.dart';
 import 'package:redseaboats/App/NearbyModule/View/nearby_view.dart';
-import 'package:redseaboats/App/ProfileModule/View/profile_view.dart';
+import 'package:redseaboats/App/ProfileModule/Profile/View/profile_view.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 

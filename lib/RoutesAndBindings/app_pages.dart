@@ -10,6 +10,10 @@ import 'package:redseaboats/App/HomeModule/Home/View/home_view.dart';
 import 'package:redseaboats/App/HomeModule/Home/ViewModel/home_view_model.dart';
 import 'package:redseaboats/App/OnBoardingModule/View/onboarding_view.dart';
 import 'package:redseaboats/App/OnBoardingModule/ViewModel/onBoarding_view_model.dart';
+import 'package:redseaboats/App/ProfileModule/EditProfile/View/edit_profile_view.dart';
+import 'package:redseaboats/App/ProfileModule/EditProfile/ViewModel/edit_profile_view_model.dart';
+import 'package:redseaboats/App/ProfileModule/MyWallet/View/mywallet_view.dart';
+import 'package:redseaboats/App/ProfileModule/MyWallet/ViewModel/mywallet_view_model.dart';
 import 'package:redseaboats/App/SplashModule/View/splash_view.dart';
 import 'package:redseaboats/App/SplashModule/ViewModel/splash_view_model.dart';
 import 'package:redseaboats/RoutesAndBindings/app_routes.dart';
@@ -78,6 +82,19 @@ class AppPages{
       transition: Transition.fade,
       
       ),
-     
+     GetPage(
+        name: AppRoutes.editProfileView, 
+        page: ()=>  EditProfileView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => EditProfileViewModel());
+        })),
+        GetPage(
+        name: AppRoutes.myWalletView, 
+        page: ()=>  MyWalletView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => MyWalletViewModel());
+        })),
   ];
 }

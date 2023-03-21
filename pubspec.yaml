@@ -41,6 +41,8 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   lottie: ^2.3.0
   google_maps_flutter: ^2.2.5
+  image_picker: ^0.8.7
+  dotted_border: ^2.0.0+3
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +73,7 @@ flutter:
     - assets/interest/
     - assets/home/icons/
     - assets/booking/icons/
+    - assets/profile/icons/
     - assets/navbar/
     - assets/home/offers/
   #   - images/a_dot_ham.jpeg

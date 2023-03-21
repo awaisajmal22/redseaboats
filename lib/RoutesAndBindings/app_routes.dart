@@ -8,4 +8,6 @@ abstract class AppRoutes{
   static const navBar = '/navBar';
   static const bookingView = '/bookingView';
   static const chatView = '/chatView';
+  static const editProfileView = '/editProfileView';
+  static const myWalletView = '/myWalletView';
 }
