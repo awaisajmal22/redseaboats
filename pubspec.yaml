@@ -43,6 +43,7 @@ dependencies:
   google_maps_flutter: ^2.2.5
   image_picker: ^0.8.7
   dotted_border: ^2.0.0+3
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/splash/
+    - assets/search/
+    - assets/membership/
     - assets/onBoarding/
     - assets/interest/
     - assets/home/icons/

@@ -106,6 +106,7 @@ class MyWalletView extends StatelessWidget {
                   ]
                 ),
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Row(
@@ -116,6 +117,7 @@ class MyWalletView extends StatelessWidget {
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             appText(text: date, textColor: AppColor.textGrey, fontWeight:  FontWeight.w500, fontSize: SizeConfig.textMultiplier * 1.5),
                             appText(text: title, textColor: AppColor.textBlack, fontWeight:  FontWeight.w700, fontSize: SizeConfig.textMultiplier * 1.75),

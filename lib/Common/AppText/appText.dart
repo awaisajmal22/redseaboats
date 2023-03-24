@@ -6,7 +6,7 @@ TextOverflow textOverFlow = TextOverflow.visible,
 Color textColor = Colors.white,
 double fontSize = 16,
 TextAlign textAlign = TextAlign.center,
-FontWeight fontWeight = FontWeight.w600,
+FontWeight fontWeight = FontWeight.w700,
 String fontFamily = 'Poppins',
 int maxLines = 3
 

@@ -13,4 +13,6 @@ class AppColor{
   static const shadow29 = Color(0xff000029);
   static const whiteFC = Color(0xffF9F9FC);
   static const shadow5D = Color(0xff5D5D5D);
+  static const shadowColor1A = Color(0xff00001A);
+  static const cursorColor = Color(0xffB2894E);
 }

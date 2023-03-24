@@ -9,7 +9,7 @@ import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 
 import '../../../../Common/AppBar/custom_appbar_2.dart';
-import 'Component/edit_profile_formfield.dart';
+import '../../../../Common/FormField/custom_formfield.dart';
 import 'Component/edit_profile_picture_tile.dart';
 
 class EditProfileView extends StatelessWidget {
@@ -62,7 +62,7 @@ final editProfileVM = Get.find<EditProfileViewModel>();
             Container(
               alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
-            height: SizeConfig.heightMultiplier * 15,
+            // height: SizeConfig.heightMultiplier * 15,
             width: SizeConfig.widthMultiplier * 100,
             decoration: BoxDecoration(
             color: AppColor.whiteFC. withOpacity(0.95),
@@ -71,7 +71,10 @@ final editProfileVM = Get.find<EditProfileViewModel>();
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                editProfileFormField(
+                customFormField(
+                  isObsecure: (){},
+                  validator: (value){},
+                  suffixIcon: Icon(null),
                  controller: editProfileVM.firstNameController, 
                   hintText: 'Jessica'
                   ),
@@ -80,7 +83,10 @@ final editProfileVM = Get.find<EditProfileViewModel>();
                   width: SizeConfig.widthMultiplier * 100,
                   color: AppColor.textGrey.withOpacity(0.20),
                 ),
-                editProfileFormField(
+                customFormField(
+                  isObsecure: (){},
+                  validator: (value){},
+                  suffixIcon: Icon(null),
                  controller: editProfileVM.lastNameController,
                  hintText:  'Strike'
                  )
@@ -93,7 +99,7 @@ final editProfileVM = Get.find<EditProfileViewModel>();
           Container(
               alignment: Alignment.center,
           padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
-            height: SizeConfig.heightMultiplier * 15,
+            // height: SizeConfig.heightMultiplier * 15,
             width: SizeConfig.widthMultiplier * 100,
             decoration: BoxDecoration(
             color: AppColor.whiteFC. withOpacity(0.95),
@@ -102,7 +108,11 @@ final editProfileVM = Get.find<EditProfileViewModel>();
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                editProfileFormField(
+                customFormField(
+                  isObsecure: (){},
+        
+                  validator: (value){},
+                  suffixIcon: Icon(null),
                   controller: editProfileVM.emailController, 
                  hintText: 'Jessica.strike@gmail.com'
                   ),
@@ -111,7 +121,11 @@ final editProfileVM = Get.find<EditProfileViewModel>();
                   width: SizeConfig.widthMultiplier * 100,
                   color: AppColor.textGrey.withOpacity(0.20),
                 ),
-                editProfileFormField(
+                customFormField(
+                  isObsecure: (){},
+        
+                  validator: (value){},
+                  suffixIcon: Icon(null),
                   controller: editProfileVM.phoneController,
                   hintText: '+971 50 1234 567',
                   textInputAction: TextInputAction.done,

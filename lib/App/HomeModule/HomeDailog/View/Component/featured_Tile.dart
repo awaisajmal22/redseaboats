@@ -21,7 +21,8 @@ Widget featuredTile({
   required BuildContext context,
   required Function(double?)? ratingCallback,
   required double initialRating,
-  required String ratingTitle
+  required String ratingTitle,
+  required String imageUrl
   }
 ) {
   return GestureDetector(
@@ -33,7 +34,7 @@ Widget featuredTile({
                       decoration: BoxDecoration(
                        
                         borderRadius: BorderRadius.circular(14),
-                        image: const DecorationImage(image: NetworkImage('https://media.istockphoto.com/id/1146517111/photo/taj-mahal-mausoleum-in-agra.jpg?s=612x612&w=0&k=20&c=vcIjhwUrNyjoKbGbAQ5sOcEzDUgOfCsm9ySmJ8gNeRk=',),fit: BoxFit.cover)
+                        image:  DecorationImage(image: NetworkImage(imageUrl),fit: BoxFit.cover)
                       ),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,

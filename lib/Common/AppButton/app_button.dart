@@ -9,7 +9,8 @@ Widget appButton(
     double radius = 6,
     Color buttonColor = AppColor.parrotGreen,
     required Widget widget,
-    Alignment buttonWidgetAlignment = Alignment.center
+    Alignment buttonWidgetAlignment = Alignment.center,
+    Color borderColor = AppColor.transparent
 
   }
 ){
@@ -21,6 +22,10 @@ Widget appButton(
       width: butonWidth,
       decoration: BoxDecoration(
         color: buttonColor,
+        border: Border.all(
+          color: borderColor,
+          width: 2
+        ),
         borderRadius: BorderRadius.circular(radius)
       ),
       child: widget,

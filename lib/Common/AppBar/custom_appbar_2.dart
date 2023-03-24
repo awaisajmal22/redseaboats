@@ -4,24 +4,27 @@ import 'package:get/get.dart';
 import '../AppColors/app_colors.dart';
 
 AppBar customAppBar2({
-  required String title
+  required String title,
+  Color titleColor = AppColor.textBlack,
   }
 ) {
     return AppBar(
       backgroundColor: AppColor.transparent,
       elevation: 0,
+      
       centerTitle: true,
       leading: GestureDetector(
         onTap: (){
           Get.back();
         },
-        child: const Icon(Icons.arrow_back, color: AppColor.textBlack,),
+        child:  Icon(Icons.arrow_back, color: titleColor),
       ),
-      title:  Text(title, style: const TextStyle(
+      title:  Text(title, 
+      style:  TextStyle(
         fontFamily: 'Poppins',
         fontSize: 18,
         fontWeight: FontWeight.w700,
-        color: AppColor.textBlack
+        color: titleColor
       ),),
     );
   }

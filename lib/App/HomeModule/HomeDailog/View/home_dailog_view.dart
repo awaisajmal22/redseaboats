@@ -7,6 +7,7 @@ import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 
+import '../../../ProfileModule/Favorite/ViewModel/favroite_view_model.dart';
 import '../../Home/ViewModel/home_view_model.dart';
 import 'Component/featured_Tile.dart';
 
@@ -14,6 +15,7 @@ import 'Component/featured_Tile.dart';
 class HomeDialog extends StatelessWidget {
    HomeDialog({super.key});
 final homeVM = Get.find<HomeViewModel>();
+final favoriteVM = Get.find<FavoriteViewModel>();
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -62,6 +64,7 @@ final homeVM = Get.find<HomeViewModel>();
                             itemBuilder: (context, index){
                             return Obx(
                               ()=> featuredTile(
+                                imageUrl: homeVM.homDailogList[index].imageUrl,
                         ratingTitle: '1658',
                         context: context,
                         initialRating: 3.0,
@@ -72,6 +75,12 @@ final homeVM = Get.find<HomeViewModel>();
                         isFavorite: homeVM.homDailogList[index].favorite.value, 
                         isFavoriteCallback: (){
                           homeVM.homDailogList[index].favorite.value = !homeVM.homDailogList[index].favorite.value;
+                          if(homeVM.homDailogList[index].favorite.value == true){
+                        favoriteVM.favoriteList.add(homeVM.homDailogList[index]);
+                      }
+                      else {
+                        favoriteVM.favoriteList.remove(homeVM.homDailogList[index]);
+                      }
                         }, 
                         discount: homeVM.homDailogList[index].discount, 
                         title: homeVM.homDailogList[index].title, 

@@ -6,6 +6,7 @@ Widget homeSearchField(
   {
     required VoidCallback filterCallBack,
     required TextEditingController controller,
+    required VoidCallback searchCallback,
     required String hintText
   }
 ){
@@ -42,24 +43,32 @@ Widget homeSearchField(
         fontFamily: 'Poppins',
         fontWeight: FontWeight.w400
       ),
-        prefixIcon: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Container(
-              height: SizeConfig.heightMultiplier * 3.8,
-              width: SizeConfig.widthMultiplier * 7.4,
-              decoration: BoxDecoration(
-                color: AppColor.parrotGreen,
-                borderRadius: BorderRadius.circular(8),
-                image: const DecorationImage(image: AssetImage('assets/home/icons/search.png'), fit: BoxFit.cover)
-              ),
-              
-            ),
-            SizedBox(
-              width: SizeConfig.widthMultiplier * 4.5,
-            )
-          ],
+        prefixIcon: Padding(
+          padding:  EdgeInsets.only(right: SizeConfig.widthMultiplier * 4.5),
+          child: GestureDetector(
+            onTap: searchCallback,
+            child: Image(image: AssetImage('assets/home/icons/search.png'), height: SizeConfig.heightMultiplier * 3.8,
+            width: SizeConfig.widthMultiplier * 7.4,),
+          ),
         ),
+        // Row(
+        //   mainAxisSize: MainAxisSize.min,
+        //   children: [
+        //     Container(
+        //       height: SizeConfig.heightMultiplier * 3.8,
+        //       width: SizeConfig.widthMultiplier * 7.4,
+        //       decoration: BoxDecoration(
+        //         color: AppColor.parrotGreen,
+        //         borderRadius: BorderRadius.circular(8),
+        //         image: const DecorationImage(image: AssetImage('assets/home/icons/search.png'), fit: BoxFit.cover)
+        //       ),
+              
+        //     ),
+        //     SizedBox(
+        //       width: SizeConfig.widthMultiplier * 4.5,
+        //     )
+        //   ],
+        // ),
         suffixIcon: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

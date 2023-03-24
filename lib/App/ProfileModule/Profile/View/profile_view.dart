@@ -9,6 +9,7 @@ import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 import 'package:redseaboats/RoutesAndBindings/app_routes.dart';
 
+import 'Component/logout_tile.dart';
 import 'Component/profile_tile.dart';
 
 class ProfileView extends StatelessWidget {
@@ -68,21 +69,27 @@ class ProfileView extends StatelessWidget {
                       ),
                       profileTile(
                         title: 'Favorites', 
-                        voidCallback: (){}
+                        voidCallback: (){
+                          Get.toNamed(AppRoutes.favoriteView);
+                        }
                         ),
                          SizedBox(
                         height: SizeConfig.heightMultiplier * 0.5,
                       ),
                       profileTile(
                         title: 'Membership', 
-                        voidCallback: (){}
+                        voidCallback: (){
+                          Get.toNamed(AppRoutes.membershipView);
+                        }
                         ),
                          SizedBox(
                         height: SizeConfig.heightMultiplier * 0.5,
                       ),
                       profileTile(
                         title: 'Settings', 
-                        voidCallback: (){}
+                        voidCallback: (){
+                          Get.toNamed(AppRoutes.settingsView);
+                        }
                         ),
                         SizedBox(
                           height: SizeConfig.heightMultiplier * 0.5,
@@ -124,32 +131,5 @@ class ProfileView extends StatelessWidget {
   }
 
  
- Widget logOutTile(
-    {
-      required String title,
-      required VoidCallback voidCallback
-      
-    }
-  ) {
-    return GestureDetector(
-      onTap: voidCallback,
-      child: Container(
-                        alignment: Alignment.topLeft,
-                        height: SizeConfig.heightMultiplier * 5.8,
-                        width: SizeConfig.widthMultiplier * 100,
-                        
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            appText(text: title, fontSize: SizeConfig.textMultiplier * 2.0, fontWeight: FontWeight.w500, textColor: AppColor.textBlack),
-                            SizedBox(
-                              width: SizeConfig.widthMultiplier * 2.4,
-                            ) ,
-                            Icon(FontAwesomeIcons.arrowRightFromBracket, color: AppColor.parrotGreen, size: SizeConfig.imageSizeMultiplier * 4.0,)
-                          ],
-                        ),
-                      ),
-    );
-  }
+ 
 }

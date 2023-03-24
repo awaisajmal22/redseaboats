@@ -8,9 +8,11 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:redseaboats/App/HomeModule/Home/View/Component/home_search_field.dart';
 import 'package:redseaboats/App/HomeModule/Home/View/Component/interest_tile.dart';
+import 'package:redseaboats/App/ProfileModule/Favorite/ViewModel/favroite_view_model.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
+import 'package:redseaboats/RoutesAndBindings/app_routes.dart';
 
 import '../ViewModel/home_view_model.dart';
 import 'Component/adrenaline_meter_dialog.dart';
@@ -26,6 +28,7 @@ import 'Component/title_tile.dart';
 class HomeView extends StatelessWidget {
    HomeView({super.key});
 final homeVM = Get.find<HomeViewModel>();
+final favoriteVM = Get.find<FavoriteViewModel>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,7 +41,7 @@ final homeVM = Get.find<HomeViewModel>();
             children: [
               Container(
                 color: Colors.white,
-                height: SizeConfig.heightMultiplier * 48,
+                height: SizeConfig.heightMultiplier * 49,
                 child: Stack(
                   alignment: Alignment.topCenter,
                   children: [
@@ -80,6 +83,13 @@ final homeVM = Get.find<HomeViewModel>();
                       left: SizeConfig.widthMultiplier* 5.0,
                       right: SizeConfig.widthMultiplier * 5.0,
                       child: homeSearchField(
+                        searchCallback: (){
+                          if(homeVM.searchController.text != ''){
+                          homeVM.searchList.add(homeVM.searchController.text);
+
+                          }
+                          Get.toNamed(AppRoutes.SearchView);
+                        },
                         controller: homeVM.searchController,
                         filterCallBack: (){
 
@@ -106,7 +116,7 @@ final homeVM = Get.find<HomeViewModel>();
                 
                 height: SizeConfig.heightMultiplier * 11.12,
                 child: ListView.builder(
-                  padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 3.0),
+                  padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 3.0),
                   scrollDirection: Axis.horizontal,
                   itemCount: homeVM.categoriesList.length,
                   itemBuilder: (context, index){
@@ -139,6 +149,7 @@ final homeVM = Get.find<HomeViewModel>();
                   itemBuilder: (context, index){
                 return Obx(
                   ()=> interestTile(
+                    imageUrl: homeVM.homDailogList[index].imageUrl,
                     isDailogCheck: homeVM.isDailogCheck.value,
                     ratingTitle: '1658',
                     context: context,
@@ -150,6 +161,12 @@ final homeVM = Get.find<HomeViewModel>();
                     isFavorite: homeVM.homDailogList[index].favorite.value, 
                     isFavoriteCallback: (){
                       homeVM.homDailogList[index].favorite.value = !homeVM.homDailogList[index].favorite.value;
+                      if(homeVM.homDailogList[index].favorite.value == true){
+                        favoriteVM.favoriteList.add(homeVM.homDailogList[index]);
+                      }
+                      else {
+                        favoriteVM.favoriteList.remove(homeVM.homDailogList[index]);
+                      }
                     }, 
                     discount: homeVM.homDailogList[index].discount, 
                     title: homeVM.homDailogList[index].title, 
@@ -201,22 +218,28 @@ final homeVM = Get.find<HomeViewModel>();
                 child: ListView.builder(
                   padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5.0),
                   scrollDirection: Axis.horizontal,
-                  itemCount: homeVM.homDailogList.length,
+                  itemCount: homeVM.comboPackageList.length,
                   itemBuilder: (context, index){
                     return Obx(
                       ()=> homeServicesTile(
                         initialRating: 3.0,
                         ratingCallback: (value){},
                         isFavoriteCallback: (){
-                          homeVM.homDailogList[index].favorite.value = !homeVM.homDailogList[index].favorite.value;
+                          homeVM.comboPackageList[index].favorite.value = !homeVM.comboPackageList[index].favorite.value;
+                          if(homeVM.comboPackageList[index].favorite.value == true){
+                            favoriteVM.favoriteList.add(homeVM.comboPackageList[index]);
+                          }
+                          else {
+                            favoriteVM.favoriteList.remove(homeVM.comboPackageList[index]);
+                          }
                         },
-                        isFavorite: homeVM.homDailogList[index].favorite.value,
-                        discount: homeVM.homDailogList[index].discount,
-                        title: homeVM.homDailogList[index].title,
-                        subtitle: homeVM.homDailogList[index].subtitle,
-                        location: homeVM.homDailogList[index].location,
-                        price: homeVM.homDailogList[index].price,
-                        imageUrl: homeVM.homDailogList[index].imageUrl
+                        isFavorite: homeVM.comboPackageList[index].favorite.value,
+                        discount: homeVM.comboPackageList[index].discount,
+                        title: homeVM.comboPackageList[index].title,
+                        subtitle: homeVM.comboPackageList[index].subtitle,
+                        location: homeVM.comboPackageList[index].location,
+                        price: homeVM.comboPackageList[index].price,
+                        imageUrl: homeVM.comboPackageList[index].imageUrl
                       ),
                     );
                 }),
@@ -237,22 +260,28 @@ final homeVM = Get.find<HomeViewModel>();
                 child: ListView.builder(
                   padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5.0),
                   scrollDirection: Axis.horizontal,
-                  itemCount: homeVM.homDailogList.length,
+                  itemCount: homeVM.featuredList.length,
                   itemBuilder: (context, index){
                     return Obx(
                       ()=> homeServicesTile(
                         initialRating: 3.0,
                         ratingCallback: (value){},
                         isFavoriteCallback: (){
-                          homeVM.homDailogList[index].favorite.value = !homeVM.homDailogList[index].favorite.value;
+                          homeVM.featuredList[index].favorite.value = !homeVM.featuredList[index].favorite.value;
+                          if(homeVM.featuredList[index].favorite.value == true){
+                            favoriteVM.favoriteList.add(homeVM.featuredList[index]);
+                          }
+                          else{
+                           favoriteVM.favoriteList.remove(homeVM.featuredList[index]);
+                          }
                         },
-                        isFavorite: homeVM.homDailogList[index].favorite.value,
-                        discount: homeVM.homDailogList[index].discount,
-                        title: homeVM.homDailogList[index].title,
-                        subtitle: homeVM.homDailogList[index].subtitle,
-                        location: homeVM.homDailogList[index].location,
-                        price: homeVM.homDailogList[index].price,
-                        imageUrl: homeVM.homDailogList[index].imageUrl
+                        isFavorite: homeVM.featuredList[index].favorite.value,
+                        discount: homeVM.featuredList[index].discount,
+                        title: homeVM.featuredList[index].title,
+                        subtitle: homeVM.featuredList[index].subtitle,
+                        location: homeVM.featuredList[index].location,
+                        price: homeVM.featuredList[index].price,
+                        imageUrl: homeVM.featuredList[index].imageUrl
                       ),
                     );
                 }),
@@ -273,22 +302,29 @@ final homeVM = Get.find<HomeViewModel>();
                 child: ListView.builder(
                   padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5.0),
                   scrollDirection: Axis.horizontal,
-                  itemCount: homeVM.homDailogList.length,
+                  itemCount: homeVM.nearByList.length,
                   itemBuilder: (context, index){
                     return Obx(
                       ()=> homeServicesTile(
                         initialRating: 3.0,
                         ratingCallback: (value){},
                         isFavoriteCallback: (){
-                          homeVM.homDailogList[index].favorite.value = !homeVM.homDailogList[index].favorite.value;
+                          homeVM.nearByList[index].favorite.value = !homeVM.nearByList[index].favorite.value;
+                          if(homeVM.homDailogList[index].favorite.value == true){
+                            favoriteVM.favoriteList.add(homeVM.nearByList[index]);
+                          }
+                          else{
+                            favoriteVM.favoriteList.remove(homeVM.nearByList[index]);
+                          }
+                          print(favoriteVM.favoriteList.length);
                         },
-                        isFavorite: homeVM.homDailogList[index].favorite.value,
-                        discount: homeVM.homDailogList[index].discount,
-                        title: homeVM.homDailogList[index].title,
-                        subtitle: homeVM.homDailogList[index].subtitle,
-                        location: homeVM.homDailogList[index].location,
-                        price: homeVM.homDailogList[index].price,
-                        imageUrl: homeVM.homDailogList[index].imageUrl
+                        isFavorite: homeVM.nearByList[index].favorite.value,
+                        discount: homeVM.nearByList[index].discount,
+                        title: homeVM.nearByList[index].title,
+                        subtitle: homeVM.nearByList[index].subtitle,
+                        location: homeVM.nearByList[index].location,
+                        price: homeVM.nearByList[index].price,
+                        imageUrl: homeVM.nearByList[index].imageUrl
                       ),
                     );
                 }),
@@ -303,25 +339,28 @@ final homeVM = Get.find<HomeViewModel>();
           )
         ],
       ),
-      floatingActionButton: AnimatedBuilder(
-      
-        animation: homeVM.animation!,
-        child: GestureDetector(
-          onTap: (){
-           homeVM.isShowAderlineMeter.value = !homeVM.isShowAderlineMeter.value;
-            homeVM.isDailogCheck.value = !homeVM.isDailogCheck.value;
-            homeVM.rotateContainer(360);
-            homeVM.animationController!.forward(from: 0);
-          },
-          child: Image(image: AssetImage('assets/home/icons/float.png'), fit: BoxFit.cover, width:  54, height: 54,)
-        ),
-        builder: (context, child) {
-          
-          return Transform.rotate(
+      floatingActionButton: Padding(
+        padding:  EdgeInsets.only(right: SizeConfig.widthMultiplier * 0.8),
+        child: AnimatedBuilder(
+        
+          animation: homeVM.animation!,
+          child: GestureDetector(
+            onTap: (){
+             homeVM.isShowAderlineMeter.value = !homeVM.isShowAderlineMeter.value;
+              homeVM.isDailogCheck.value = !homeVM.isDailogCheck.value;
+              homeVM.rotateContainer(360);
+              homeVM.animationController!.forward(from: 0);
+            },
+            child: Image(image: AssetImage('assets/home/icons/float.png'), fit: BoxFit.cover, width:  SizeConfig.widthMultiplier * 12.4, height: SizeConfig.heightMultiplier * 6.4,)
+          ),
+          builder: (context, child) {
             
-            angle: homeVM.animation!.value, child: child,
-            );
-        },
+            return Transform.rotate(
+              
+              angle: homeVM.animation!.value, child: child,
+              );
+          },
+        ),
       ),
       
     );

@@ -4,7 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:redseaboats/App/HomeModule/HomeDailog/Model/home_dialog_model.dart';
+import 'package:redseaboats/App/HomeModule/HomeDailog/Model/home_model.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 
 import '../../HomeDailog/View/home_dailog_view.dart';
@@ -12,6 +12,7 @@ import '../Model/category_model.dart';
 
 class HomeViewModel extends GetxController with GetTickerProviderStateMixin{
   final searchController = TextEditingController();
+  final searchController2 = TextEditingController();
   RxInt carouselTileSelectedIndex = 0.obs;
   RxBool isShowAderlineMeter = false.obs;
   List carouselImageList = [
@@ -68,8 +69,8 @@ List offerList = [
   'assets/home/offers/Offer1.png',
   'assets/home/offers/offer2.png',
 ];
-  RxList<HomeDialogModel> homDailogList = <HomeDialogModel>[
-    HomeDialogModel(
+  RxList<HomeModel> homDailogList = <HomeModel>[
+    HomeModel(
       imageUrl: 'https://cdn.pixabay.com/photo/2016/11/06/05/36/lake-1802337__340.jpg',
       title: 'Dhow Cruise', 
       discount: '50',
@@ -79,7 +80,7 @@ List offerList = [
       price: 'AED 420/hr', 
       favorite: false.obs
       ),
-    HomeDialogModel(
+    HomeModel(
       imageUrl: 'https://cdn.pixabay.com/photo/2018/01/22/14/13/animal-3099035__340.jpg',
       title: 'Dhow Cruise', 
       discount: '50',
@@ -90,5 +91,76 @@ List offerList = [
       favorite: false.obs
       ),
   ].obs;
+  RxList<HomeModel> nearByList = <HomeModel>[
+    HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2016/11/14/03/16/book-1822474__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: 'AED 420/hr', 
+      favorite: false.obs
+      ),
+    HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2017/01/06/22/24/giraffe-1959110__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: 'AED 420/hr', 
+      favorite: false.obs
+      ),
+  ].obs;
 
+  RxList<HomeModel> comboPackageList = <HomeModel>[
+    HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2020/10/17/11/55/elephants-5661842__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: 'AED 420/hr', 
+      favorite: false.obs
+      ),
+    HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2020/03/01/15/30/fox-4893199__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: 'AED 420/hr', 
+      favorite: false.obs
+      ),
+  ].obs;
+
+  RxList<HomeModel> featuredList = <HomeModel>[
+    HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2018/04/29/01/15/coast-3358820__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: 'AED 420/hr', 
+      favorite: false.obs
+      ),
+    HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2017/06/04/23/17/lighthouse-2372461__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: 'AED 420/hr', 
+      favorite: false.obs
+      ),
+  ].obs;
+
+  RxList searchList = [
+
+  ].obs;
 }
