@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:redseaboats/App/BookingModule/CancelBookingDialog/View/cancel_booking_dailog.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/View/Component/menage_booking_bottomsheet.dart';
-import 'package:redseaboats/App/BookingModule/BookingDetail/View/Component/my_seperator.dart';
+import 'package:redseaboats/Common/Seprator/my_seperator.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/View/Component/ticket_info_card_tile.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/ViewModel/booking_detail_view_model.dart';
 import 'package:redseaboats/Common/AppBar/custom_appbar_2.dart';
@@ -26,7 +26,7 @@ import 'Component/location_tile.dart';
 class BookingDetailView extends StatelessWidget {
   BookingDetailView({super.key});
   final bookingDetailVM = Get.find<BookingDetailViewModel>();
-  var args = Get.arguments;
+  var rsNumber = Get.arguments[0];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +45,7 @@ class BookingDetailView extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 0.5,
             ),
             appText(
-                text: args[0],
+                text: rsNumber,
                 textColor: AppColor.parrotGreen,
                 fontSize: SizeConfig.textMultiplier * 3.2),
             SizedBox(
@@ -142,13 +142,18 @@ class BookingDetailView extends StatelessWidget {
             SizedBox(
               height: SizeConfig.heightMultiplier * 2.0,
             ),
-            Row(
-              children: List.generate(
-                  bookingDetailVM.amenitiesList.length,
-                  (index) => anemitiesTile(
+            SizedBox(
+              height: SizeConfig.heightMultiplier * 7.6,
+              child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+              itemCount: bookingDetailVM.amenitiesList.length,
+              itemBuilder: (context, index){
+              return anemitiesTile(
                       imageUrl: bookingDetailVM.amenitiesList[index].imageUrl,
-                      name: bookingDetailVM.amenitiesList[index].name)),
+                      name: bookingDetailVM.amenitiesList[index].name);
+            }),
             ),
+            
             SizedBox(
               height: SizeConfig.heightMultiplier * 3.0,
             ),
@@ -206,7 +211,9 @@ class BookingDetailView extends StatelessWidget {
                               return CancelBookingDailog();
                             });
                       },
-                      rescheduleBookingCallback: () {});
+                      rescheduleBookingCallback: () {
+                        Get.toNamed(AppRoutes.bookingDateTimeView,);
+                      });
                 },
                 widget: appText(
                     text: 'Manage Booking',

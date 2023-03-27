@@ -18,12 +18,7 @@ final homeVM = Get.find<HomeViewModel>();
 final favoriteVM = Get.find<FavoriteViewModel>();
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        Get.back();
-        homeVM.isDailogCheck.value = true;
-      },
-      child: Scaffold(
+    return Scaffold(
         backgroundColor: AppColor.transparent,
         body: Center(
           child: BackdropFilter(
@@ -117,7 +112,7 @@ final favoriteVM = Get.find<FavoriteViewModel>();
             ),
           ),
         ),
-      ),
+      
     );
   }
 }

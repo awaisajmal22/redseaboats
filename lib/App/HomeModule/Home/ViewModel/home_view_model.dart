@@ -23,11 +23,76 @@ class HomeViewModel extends GetxController with GetTickerProviderStateMixin{
  
 RxBool isDailogCheck = false.obs;
   List<CategoriesModel> categoriesList = <CategoriesModel>[
-    CategoriesModel(imageUrl: 'https://images.pexels.com/photos/15836010/pexels-photo-15836010.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Jet Skiing'),
-    CategoriesModel(imageUrl: 'https://images.pexels.com/photos/6913372/pexels-photo-6913372.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Dhow Cruise'),
-    CategoriesModel(imageUrl: 'https://images.pexels.com/photos/15798715/pexels-photo-15798715.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Kite Surfing'),
-    CategoriesModel(imageUrl: 'https://images.pexels.com/photos/10347606/pexels-photo-10347606.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Water Ski'),
-    CategoriesModel(imageUrl: 'https://images.pexels.com/photos/15572216/pexels-photo-15572216.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Flyboarding'),
+    CategoriesModel(
+      imageUrl: 'https://images.pexels.com/photos/15836010/pexels-photo-15836010.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Jet Skiing',
+      categories: [
+        HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2016/08/12/03/41/cosmos-1587514__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: '420', 
+      favorite: false.obs
+      ),
+      ]
+    ),
+    CategoriesModel(
+      imageUrl: 'https://images.pexels.com/photos/6913372/pexels-photo-6913372.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
+       title: 'Dhow Cruise',
+       categories: [
+        HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2017/12/17/15/58/mouflon-3024471__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: '420', 
+      favorite: false.obs
+      ),
+      
+       ]
+       ),
+    CategoriesModel(
+      imageUrl: 'https://images.pexels.com/photos/15798715/pexels-photo-15798715.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', 
+      title: 'Kite Surfing',
+      categories: [
+         HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2017/12/18/09/54/lago-di-limides-3025780__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: '420', 
+      favorite: false.obs
+      ),
+       HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2020/06/03/17/51/hummingbird-5255827__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: '420', 
+      favorite: false.obs
+      ),
+       HomeModel(
+      imageUrl: 'https://cdn.pixabay.com/photo/2018/01/17/09/12/sunset-3087790__340.jpg',
+      title: 'Dhow Cruise', 
+      discount: '50',
+      subtitle: 'Dubai Water Sports', 
+      description: "Portugal there's so much more to discover. Read about the Azores...", 
+      location: 'Marina, Dubai', 
+      price: '420', 
+      favorite: false.obs
+      ),
+      ]
+      ),
+    // CategoriesModel(imageUrl: 'https://images.pexels.com/photos/10347606/pexels-photo-10347606.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Water Ski'),
+    // CategoriesModel(imageUrl: 'https://images.pexels.com/photos/15572216/pexels-photo-15572216.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load', title: 'Flyboarding'),
   ];
   @override
   void onInit() {
@@ -77,7 +142,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
     HomeModel(
@@ -87,7 +152,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
   ].obs;
@@ -99,7 +164,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
     HomeModel(
@@ -109,7 +174,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
   ].obs;
@@ -122,7 +187,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
     HomeModel(
@@ -132,7 +197,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
   ].obs;
@@ -145,7 +210,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
     HomeModel(
@@ -155,7 +220,7 @@ List offerList = [
       subtitle: 'Dubai Water Sports', 
       description: "Portugal there's so much more to discover. Read about the Azores...", 
       location: 'Marina, Dubai', 
-      price: 'AED 420/hr', 
+      price: '420', 
       favorite: false.obs
       ),
   ].obs;

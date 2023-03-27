@@ -1,12 +1,18 @@
 import 'package:get/get.dart';
 import 'package:redseaboats/App/BookingModule/Booking/View/booking_view.dart';
 import 'package:redseaboats/App/BookingModule/Booking/ViewModel/booking_view_model.dart';
+import 'package:redseaboats/App/BookingModule/BookingDateTime/View/booking_date_time_view.dart';
+import 'package:redseaboats/App/BookingModule/BookingDateTime/ViewModel/booking_date_time_view_model.dart';
 import 'package:redseaboats/App/BookingModule/Complaint/View/complaint_view.dart';
 import 'package:redseaboats/App/BookingModule/CancelBookingDialog/View/cancel_booking_dailog.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/View/booking_detail_view.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/ViewModel/booking_detail_view_model.dart';
 import 'package:redseaboats/App/BookingModule/Complaint/ViewModel/complaint_view_model.dart';
 import 'package:redseaboats/App/BottomNavBarModule/View/navBar_view.dart';
+import 'package:redseaboats/App/CategoriesModule/Categories/View/categories_view.dart';
+import 'package:redseaboats/App/CategoriesModule/Categories/ViewModel/categories_view_model.dart';
+import 'package:redseaboats/App/CategoriesModule/CategoriesDetail/View/categories_detail_view.dart';
+import 'package:redseaboats/App/CategoriesModule/CategoriesDetail/ViewModel/categories_detail_view_model.dart';
 import 'package:redseaboats/App/ChatModule/SingleUserChat/View/single_user_chat_view.dart';
 import 'package:redseaboats/App/ChatModule/SingleUserChat/ViewModel/single_user_chat_view_model.dart';
 import 'package:redseaboats/App/ChatModule/WholeChat/ViewModel/chat_view_model.dart';
@@ -208,6 +214,29 @@ class AppPages{
         transition: Transition.fade,
         binding: BindingsBuilder(() {
           Get.lazyPut(() => FilterViewModel());
+        })),
+         GetPage(
+        name: AppRoutes.categoriesView, 
+        page: ()=>  CategoriesView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => HomeViewModel());
+        })),
+         GetPage(
+        name: AppRoutes.categoriesDetailView, 
+        page: ()=>  CategoriesDetailView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => HomeViewModel());
+          Get.lazyPut(() => CategoriesDetailViewModel());
+        })),
+         GetPage(
+        name: AppRoutes.bookingDateTimeView, 
+        page: ()=>  BookingDateTimeView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => BookingDateTimeViewModel());
+          Get.lazyPut(() => HomeViewModel());
         })),
   ];
 }

@@ -4,11 +4,13 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:redseaboats/App/SearchModule/Filter/ViewModel/filter_view_model.dart';
 import 'package:redseaboats/Common/AppBar/custom_appbar_2.dart';
+import 'package:redseaboats/Common/AppButton/app_button.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 
 import 'Component/filter_tile.dart';
+import 'Component/slider_tile.dart';
 
 class FilterView extends StatelessWidget {
   FilterView({super.key});
@@ -99,9 +101,38 @@ class FilterView extends StatelessWidget {
           SizedBox(
             height: SizeConfig.heightMultiplier * 2.0,
           ),
-          
+          Obx(
+            ()=> ranegSliderTile(
+              voidCallBack: (value){
+              filterVM.startValue.value = value!.start;
+              filterVM.endValue.value = value.end;
+             },
+              startValue: filterVM.startValue.value,
+              endValue:  filterVM.endValue.value
+            ),
+          ),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 5.0,
+          ),
+          appButton(
+            butonWidth: SizeConfig.widthMultiplier * 100,
+            buttonHeight: SizeConfig.heightMultiplier * 6.8,
+            buttonColor: AppColor.parrotGreen,
+            voidCallback: (){}, widget: appText(text: 'Apply filters', fontSize: SizeConfig.textMultiplier * 2.0)
+          ),
+          SizedBox(
+            height: SizeConfig.heightMultiplier * 0.5,
+          ),
+          appButton(
+            butonWidth: SizeConfig.widthMultiplier * 100,
+            buttonHeight: SizeConfig.heightMultiplier * 6.8,
+            buttonColor: AppColor.white,
+            voidCallback: (){}, widget: appText(text: 'Clear filters', fontSize: SizeConfig.textMultiplier * 2.0, textColor: AppColor.textBlack)
+          ),
         ],
       ),
     );
   }
+
+  
 }

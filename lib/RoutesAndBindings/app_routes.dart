@@ -24,4 +24,7 @@ abstract class AppRoutes {
   static const complaintView = '/complaintView';
   static const SearchView = '/searchView';
   static const filterView = '/filterView';
+  static const categoriesView = '/categoriesView';
+  static const categoriesDetailView = '/categoriesDetailView';
+  static const bookingDateTimeView = '/bookingDateTimeView';
 }

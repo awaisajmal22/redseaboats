@@ -21,4 +21,7 @@ class FilterViewModel extends GetxController{
     'Fujairah',
     'Sharjah'
   ];
+
+  RxDouble startValue = 0.0.obs;
+  RxDouble endValue = 0.0.obs;
 }

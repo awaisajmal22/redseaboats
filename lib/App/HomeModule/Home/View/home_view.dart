@@ -92,7 +92,7 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                         },
                         controller: homeVM.searchController,
                         filterCallBack: (){
-
+                          Get.toNamed(AppRoutes.filterView);
                         },
                         hintText: 'Search Here'
                       )
@@ -123,7 +123,14 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                     return categoryTile(
                       index: index,
                       length: homeVM.categoriesList.length,
-                      categoriesCallBack: (){},
+                      categoriesCallBack: (){
+                        Get.toNamed(AppRoutes.categoriesView,
+                        arguments: [
+                          homeVM.categoriesList[index].title,
+                          homeVM.categoriesList[index].categories
+                        ]
+                        );
+                      },
                       imageUrl: homeVM.categoriesList[index].imageUrl,
                       title: homeVM.categoriesList[index].title
                     );

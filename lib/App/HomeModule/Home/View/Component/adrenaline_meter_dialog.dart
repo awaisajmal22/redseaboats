@@ -57,7 +57,7 @@ Widget adrenalineMeterDailog() {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(right: SizeConfig.widthMultiplier * 3.5),
+                  padding: EdgeInsets.only(right: SizeConfig.widthMultiplier * 4.0),
                   child: Align(
                     alignment: Alignment.topRight,
                   child: Transform.rotate(

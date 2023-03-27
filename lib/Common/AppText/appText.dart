@@ -8,8 +8,9 @@ double fontSize = 16,
 TextAlign textAlign = TextAlign.center,
 FontWeight fontWeight = FontWeight.w700,
 String fontFamily = 'Poppins',
-int maxLines = 3
-
+int maxLines = 3,
+FontStyle fontStyle = FontStyle.normal,
+TextDecoration textDecoration = TextDecoration.none
 
 
 }){
@@ -19,10 +20,12 @@ int maxLines = 3
     textAlign: textAlign,
     text,
     style: TextStyle(
+      decoration: textDecoration,
       color: textColor,
       fontSize: fontSize,
       fontWeight: fontWeight,
-      fontFamily: fontFamily
+      fontFamily: fontFamily,
+      fontStyle: fontStyle
     ),
   );
 }

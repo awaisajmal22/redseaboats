@@ -5,17 +5,20 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:redseaboats/App/BookingModule/Booking/ViewModel/booking_view_model.dart';
+import 'package:redseaboats/App/HomeModule/Home/View/home_view.dart';
 import 'package:redseaboats/Common/AppBar/custom_AppBar.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 import 'package:redseaboats/RoutesAndBindings/app_routes.dart';
 
+import '../../../HomeModule/Home/ViewModel/home_view_model.dart';
 import 'Component/booking_tile.dart';
 
 class BookingView extends StatelessWidget {
   BookingView({super.key});
   final bookingVM = Get.find<BookingViewModel>();
+  final homeVM = Get.find<HomeViewModel>();
   final bookingNumber = 'RSB12345678';
   @override
   Widget build(BuildContext context) {
@@ -67,7 +70,10 @@ class BookingView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return bookingTile(
                           voidCallback: () {
-                            Get.toNamed(AppRoutes.bookingDetailView, arguments: [bookingNumber]);
+                            Get.toNamed(AppRoutes.bookingDetailView, arguments: [
+                              bookingNumber,
+                             
+                              ]);
                           },
                           onratingupdate: (value) {},
                           title: 'Dhow Curise',
