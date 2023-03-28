@@ -32,4 +32,5 @@ abstract class AppRoutes {
   static const paymentDetailView ='/paymentDetailView';
   static const afterPaymentView ='/afterPayment';
   static const categoryItemDetailView ='/categoryItemDetailView';
+  static const bookingStarReviewView ='/bookingStarReview';
 }

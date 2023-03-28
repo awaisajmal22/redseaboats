@@ -26,6 +26,7 @@ import 'Component/location_tile.dart';
 class BookingDetailView extends StatelessWidget {
   BookingDetailView({super.key});
   final bookingDetailVM = Get.find<BookingDetailViewModel>();
+  var check = Get.arguments[0];
   
   @override
   Widget build(BuildContext context) {
@@ -197,7 +198,7 @@ class BookingDetailView extends StatelessWidget {
             SizedBox(
               height: SizeConfig.heightMultiplier * 3.0,
             ),
-            appButton(
+          check == 0 ? appButton(
                 butonWidth: SizeConfig.widthMultiplier * 100,
                 buttonHeight: SizeConfig.heightMultiplier * 6.8,
                 buttonColor: AppColor.red,
@@ -219,7 +220,20 @@ class BookingDetailView extends StatelessWidget {
                 },
                 widget: appText(
                     text: 'Manage Booking',
+                    fontSize: SizeConfig.textMultiplier * 2.0))
+                    : appButton(
+                butonWidth: SizeConfig.widthMultiplier * 100,
+                buttonHeight: SizeConfig.heightMultiplier * 6.8,
+                buttonColor: AppColor.parrotGreen,
+                voidCallback: () {
+                  
+                        Get.toNamed(AppRoutes.bookingStarReviewView,);
+                      
+                },
+                widget: appText(
+                    text: 'Rate your Trip',
                     fontSize: SizeConfig.textMultiplier * 2.0)),
+          
             SizedBox(
               height: SizeConfig.heightMultiplier * 2.0,
             ),

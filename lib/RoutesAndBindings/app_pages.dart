@@ -4,6 +4,7 @@ import 'package:redseaboats/App/BookingModule/Booking/ViewModel/booking_view_mod
 import 'package:redseaboats/App/BookingModule/BookingDateTime/View/booking_date_time_view.dart';
 import 'package:redseaboats/App/BookingModule/BookingDateTime/ViewModel/booking_date_time_view_model.dart';
 import 'package:redseaboats/App/BookingModule/BookingReview/View/booking_review_view.dart';
+import 'package:redseaboats/App/BookingModule/BookingStarReview/View/Booking_star_review_view.dart';
 import 'package:redseaboats/App/BookingModule/Complaint/View/complaint_view.dart';
 import 'package:redseaboats/App/BookingModule/CancelBookingDialog/View/cancel_booking_dailog.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/View/booking_detail_view.dart';
@@ -280,6 +281,13 @@ class AppPages{
         binding: BindingsBuilder(() {
           Get.lazyPut(() => HomeViewModel());
           Get.lazyPut(() => FavoriteViewModel());
+        })),
+        GetPage(
+        name: AppRoutes.bookingStarReviewView, 
+        page: ()=> BookingStarReviewView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => BookingDetailViewModel());
         })),
   ];
 }
