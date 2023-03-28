@@ -30,7 +30,7 @@ Widget ticketDetailTile(
           vertical: SizeConfig.heightMultiplier * 2.0),
       margin:
           EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
-      height: SizeConfig.heightMultiplier * 57,
+      height: SizeConfig.heightMultiplier * 55,
       width: SizeConfig.widthMultiplier * 100,
       decoration: BoxDecoration(
           color: AppColor.white,

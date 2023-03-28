@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../../Common/AppColors/app_colors.dart';
-import '../../../../../Common/AppText/appText.dart';
-import '../../../../../Common/SizeConfig/size_config.dart';
+import '../../../../../../Common/AppColors/app_colors.dart';
+import '../../../../../../Common/AppText/appText.dart';
+import '../../../../../../Common/SizeConfig/size_config.dart';
 
-Widget ticketInfoCardTile(
+Widget reviewInfoCardTile(
       {required String title,
       required String imageUrl,
       required double initialRating,
@@ -45,7 +45,7 @@ Widget ticketInfoCardTile(
             width: SizeConfig.widthMultiplier * 4.0,
           ),
           Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               appText(

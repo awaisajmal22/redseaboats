@@ -6,13 +6,12 @@ import '../../../../../Common/AppColors/app_colors.dart';
 import '../../../../../Common/AppText/appText.dart';
 import '../../../../../Common/SizeConfig/size_config.dart';
 
-Widget ticketInfoCardTile(
+Widget afterPaymentTicketTile(
       {required String title,
       required String imageUrl,
       required double initialRating,
       required Function(double?)? onratingupdate,
       required String locationName,
-      required String time,
       required String totalRating}) {
     return Container(
       alignment: Alignment.centerLeft,
@@ -76,17 +75,7 @@ Widget ticketInfoCardTile(
                 ],
               ),
               appText(text: locationName, textColor: AppColor.parrotGreen, fontWeight: FontWeight.w500, fontSize: SizeConfig.textMultiplier *1.5),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  Icon(FontAwesomeIcons.clock,color: AppColor.textBlack, size: SizeConfig.imageSizeMultiplier * 3.0,
-                  ),
-                  SizedBox(
-                    width: SizeConfig.widthMultiplier * 1.5,
-                  ),
-                  appText(text: time, textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.25, fontWeight: FontWeight.w500)
-                ],
-              )
+             
             ],
           )
         ],

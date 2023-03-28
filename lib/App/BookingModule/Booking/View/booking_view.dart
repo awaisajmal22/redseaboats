@@ -70,10 +70,7 @@ class BookingView extends StatelessWidget {
                     itemBuilder: (context, index) {
                       return bookingTile(
                           voidCallback: () {
-                            Get.toNamed(AppRoutes.bookingDetailView, arguments: [
-                              bookingNumber,
-                             
-                              ]);
+                            Get.toNamed(AppRoutes.bookingDetailView,);
                           },
                           onratingupdate: (value) {},
                           title: 'Dhow Curise',
@@ -97,11 +94,7 @@ class BookingView extends StatelessWidget {
                       return bookingTile(
                           voidCallback: () {
                             Get.toNamed(
-                              AppRoutes.bookingDetailView,
-
-                                arguments: [bookingNumber]
-                                 
-                                );
+                              AppRoutes.bookingDetailView, );
                           },
                           onratingupdate: (value) {},
                           title: 'Dhow Curise',

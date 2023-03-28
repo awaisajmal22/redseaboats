@@ -12,6 +12,7 @@ import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/Seprator/my_seperator.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 
+import '../../../../RoutesAndBindings/app_routes.dart';
 import '../../../BookingModule/BookingDetail/View/Component/anemities_tile.dart';
 import 'Component/background_image_tile.dart';
 import 'Component/expection_tile.dart';
@@ -50,7 +51,7 @@ class CategoriesDetailView extends StatelessWidget {
       padding: const EdgeInsets.only(top: 0),
       children: [
         SizedBox(
-          height: SizeConfig.heightMultiplier * 95,
+          height: SizeConfig.heightMultiplier * 90,
           child: Stack(
             alignment: Alignment.bottomCenter,
             children: [
@@ -80,6 +81,10 @@ class CategoriesDetailView extends StatelessWidget {
                 decreamentCallback: () {},
                 itemDetailCallBack: () {
                   print('object');
+                  Get.toNamed(AppRoutes.categoryItemDetailView, arguments: [
+                    imageURl,
+                    isFavorite
+                  ]);
                 },
                 increamentCallback: () {},
                 moreServicesCallBack: () {},

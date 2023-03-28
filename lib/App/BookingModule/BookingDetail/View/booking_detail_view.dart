@@ -26,7 +26,7 @@ import 'Component/location_tile.dart';
 class BookingDetailView extends StatelessWidget {
   BookingDetailView({super.key});
   final bookingDetailVM = Get.find<BookingDetailViewModel>();
-  var rsNumber = Get.arguments[0];
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,7 +45,7 @@ class BookingDetailView extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 0.5,
             ),
             appText(
-                text: rsNumber,
+                text: 'RSB12345678',
                 textColor: AppColor.parrotGreen,
                 fontSize: SizeConfig.textMultiplier * 3.2),
             SizedBox(
@@ -61,6 +61,7 @@ class BookingDetailView extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 2.25,
             ),
             appText(
+              maxLines: 100,
                 text:
                     'Please show this QR to the vendor when you arrive on the location',
                 textColor: AppColor.textGrey,
@@ -94,7 +95,8 @@ class BookingDetailView extends StatelessWidget {
             ),
             infoTile(
                 iconUrl: 'assets/booking/icons/clock.png',
-                title: '5:00 PM to 6:00 PM'),
+                title: '5:00 PM to 6:00 PM'
+                ),
             infoTile(
                 iconUrl: 'assets/booking/icons/profile2.png',
                 title: '4',

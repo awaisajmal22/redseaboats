@@ -3,10 +3,9 @@ import 'package:get/get.dart';
 
 import '../../../../../Common/SizeConfig/size_config.dart';
 
-Widget backgroundImageTile({
+Widget backgroundItemImageTile({
     required String imageUrl,
-    required bool isFavorite,
-    required VoidCallback favoriteCallback
+    required VoidCallback chatCallback
 
   }) {
     return Container(
@@ -19,7 +18,7 @@ Widget backgroundImageTile({
               ),
               image: DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover)
             ),
-            height: SizeConfig.heightMultiplier * 40,
+            height: SizeConfig.heightMultiplier * 42,
             width: SizeConfig.widthMultiplier * 100,
             child: SafeArea(
               child: Row(
@@ -29,11 +28,11 @@ Widget backgroundImageTile({
                     onTap: (){
                       Get.back();
                     },
-                    child: Image(image: AssetImage('assets/category/back.png'), fit: BoxFit.cover,height: SizeConfig.heightMultiplier * 5.6, width: SizeConfig.widthMultiplier * 11.2,)),
+                    child: Image(image: const AssetImage('assets/category/back.png'), fit: BoxFit.cover,height: SizeConfig.heightMultiplier * 5.6, width: SizeConfig.widthMultiplier * 11.2,)),
                     GestureDetector(
-                            onTap: favoriteCallback,
+                            onTap: chatCallback,
                             child: Image(
-                              image: AssetImage(isFavorite == false ? 'assets/interest/uncheck.png': 'assets/home/icons/heart.png'), width: SizeConfig.widthMultiplier * 9.2, height: SizeConfig.heightMultiplier * 4.6,)),
+                              image: const AssetImage('assets/category/chat.png'), width: SizeConfig.widthMultiplier * 9.2, height: SizeConfig.heightMultiplier * 4.6,)),
                         
                 ],
               )),

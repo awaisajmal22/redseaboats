@@ -27,4 +27,9 @@ abstract class AppRoutes {
   static const categoriesView = '/categoriesView';
   static const categoriesDetailView = '/categoriesDetailView';
   static const bookingDateTimeView = '/bookingDateTimeView';
+  static const bookingReview ='/bookingReview';
+  static const paymentMethodView = '/paymentMehtodView';
+  static const paymentDetailView ='/paymentDetailView';
+  static const afterPaymentView ='/afterPayment';
+  static const categoryItemDetailView ='/categoryItemDetailView';
 }

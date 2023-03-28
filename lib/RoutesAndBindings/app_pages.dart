@@ -3,6 +3,7 @@ import 'package:redseaboats/App/BookingModule/Booking/View/booking_view.dart';
 import 'package:redseaboats/App/BookingModule/Booking/ViewModel/booking_view_model.dart';
 import 'package:redseaboats/App/BookingModule/BookingDateTime/View/booking_date_time_view.dart';
 import 'package:redseaboats/App/BookingModule/BookingDateTime/ViewModel/booking_date_time_view_model.dart';
+import 'package:redseaboats/App/BookingModule/BookingReview/View/booking_review_view.dart';
 import 'package:redseaboats/App/BookingModule/Complaint/View/complaint_view.dart';
 import 'package:redseaboats/App/BookingModule/CancelBookingDialog/View/cancel_booking_dailog.dart';
 import 'package:redseaboats/App/BookingModule/BookingDetail/View/booking_detail_view.dart';
@@ -13,6 +14,7 @@ import 'package:redseaboats/App/CategoriesModule/Categories/View/categories_view
 import 'package:redseaboats/App/CategoriesModule/Categories/ViewModel/categories_view_model.dart';
 import 'package:redseaboats/App/CategoriesModule/CategoriesDetail/View/categories_detail_view.dart';
 import 'package:redseaboats/App/CategoriesModule/CategoriesDetail/ViewModel/categories_detail_view_model.dart';
+import 'package:redseaboats/App/CategoriesModule/CategoryItemDetail/View/category_item_detail_view.dart';
 import 'package:redseaboats/App/ChatModule/SingleUserChat/View/single_user_chat_view.dart';
 import 'package:redseaboats/App/ChatModule/SingleUserChat/ViewModel/single_user_chat_view_model.dart';
 import 'package:redseaboats/App/ChatModule/WholeChat/ViewModel/chat_view_model.dart';
@@ -25,6 +27,10 @@ import 'package:redseaboats/App/MembershipModule/Membership/ViewModel/membership
 import 'package:redseaboats/App/OnBoardingModule/View/onboarding_view.dart';
 import 'package:redseaboats/App/OnBoardingModule/ViewModel/onBoarding_view_model.dart';
 import 'package:redseaboats/App/PasswordModule/ChangePassword/View/change_password_view.dart';
+import 'package:redseaboats/App/PaymentModule/AfterPayment/View/after_payment_view.dart';
+import 'package:redseaboats/App/PaymentModule/PaymentDetail/View/payment_detail_view.dart';
+import 'package:redseaboats/App/PaymentModule/PaymentMethod/View/payment_method_view.dart';
+import 'package:redseaboats/App/PaymentModule/PaymentMethod/ViewModel/payment_method_view_model.dart';
 import 'package:redseaboats/App/ProfileModule/EditProfile/View/edit_profile_view.dart';
 import 'package:redseaboats/App/ProfileModule/EditProfile/ViewModel/edit_profile_view_model.dart';
 import 'package:redseaboats/App/ProfileModule/Favorite/View/favorite_view.dart';
@@ -49,6 +55,7 @@ import '../App/InterestModule/View/interest_view.dart';
 import '../App/InterestModule/ViewModel/interest_view_model.dart';
 import '../App/MembershipModule/MembershipDetail/View/membership_detail_view.dart';
 import '../App/MembershipModule/MembershipDetail/ViewModel/membership_detail_view_model.dart';
+import '../App/PaymentModule/PaymentDetail/ViewModel/payment_detail_view_model.dart';
 
 class AppPages{
   static final routes = [
@@ -237,6 +244,42 @@ class AppPages{
         binding: BindingsBuilder(() {
           Get.lazyPut(() => BookingDateTimeViewModel());
           Get.lazyPut(() => HomeViewModel());
+        })),
+         GetPage(
+        name: AppRoutes.bookingReview, 
+        page: ()=>  BookingReviewView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+        })),
+         GetPage(
+        name: AppRoutes.paymentMethodView, 
+        page: ()=> PaymentMehtodView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => PaymentMethodViewModel());
+        })),
+
+        GetPage(
+        name: AppRoutes.paymentDetailView, 
+        page: ()=> PaymentDetailView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => PaymentDetailViewModel());
+        })),
+        GetPage(
+        name: AppRoutes.afterPaymentView, 
+        page: ()=> AfterPaymentView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => PaymentDetailViewModel());
+        })),
+        GetPage(
+        name: AppRoutes.categoryItemDetailView, 
+        page: ()=> CategoryItemDetailView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => HomeViewModel());
+          Get.lazyPut(() => FavoriteViewModel());
         })),
   ];
 }
