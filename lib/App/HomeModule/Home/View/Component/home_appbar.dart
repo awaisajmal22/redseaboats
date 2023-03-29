@@ -5,7 +5,9 @@ import '../../../../../../Common/AppText/appText.dart';
 import '../../../../../../Common/SizeConfig/size_config.dart';
 
 Widget homeAppBar({
-    required String title
+    required String title,
+    required VoidCallback membershipCallback,
+    required VoidCallback notificationCallback
   }) {
     return AppBar(
       elevation: 0,
@@ -14,26 +16,32 @@ Widget homeAppBar({
                   title: appText(text: title, fontSize: SizeConfig.textMultiplier * 1.8, fontWeight: FontWeight.w500),
                   backgroundColor: AppColor.transparent,
                   actions: [
-                    Container(
-                      height: SizeConfig.heightMultiplier * 3.2,
-                      width: SizeConfig.widthMultiplier * 7.4,
-                      decoration: const BoxDecoration(
-                        color: AppColor.white,
-                        shape: BoxShape.circle,
-                        image: DecorationImage(image: AssetImage('assets/home/icons/Noti.png'), fit: BoxFit.contain)
+                    GestureDetector(
+                      onTap: membershipCallback,
+                      child: Container(
+                        height: SizeConfig.heightMultiplier * 3.2,
+                        width: SizeConfig.widthMultiplier * 7.4,
+                        decoration: const BoxDecoration(
+                          color: AppColor.white,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(image: AssetImage('assets/home/icons/Noti.png'), fit: BoxFit.contain)
+                        ),
                       ),
                     ),
                     SizedBox(
                       width: SizeConfig.widthMultiplier * 2.0,
                     ),
-                      Container(
-                      height: SizeConfig.heightMultiplier * 3.2,
-                      width: SizeConfig.widthMultiplier * 7.4,
-                      decoration: const BoxDecoration(
-                        color: AppColor.white,
-                        shape: BoxShape.circle,
-                        image: DecorationImage(image: AssetImage('assets/home/icons/alert.png'), fit: BoxFit.contain)
-                      ),
+                      GestureDetector(
+                        onTap: notificationCallback,
+                        child: Container(
+                        height: SizeConfig.heightMultiplier * 3.2,
+                        width: SizeConfig.widthMultiplier * 7.4,
+                        decoration: const BoxDecoration(
+                          color: AppColor.white,
+                          shape: BoxShape.circle,
+                          image: DecorationImage(image: AssetImage('assets/home/icons/alert.png'), fit: BoxFit.contain)
+                        ),
+                        ),
                       ),
                        SizedBox(
                       width: SizeConfig.widthMultiplier * 2.0,

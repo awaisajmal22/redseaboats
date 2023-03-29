@@ -27,7 +27,7 @@ Widget customFormField({
                     color: AppColor.textBlack,
                     fontSize: SizeConfig.textMultiplier * 2.0,
                     fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400
+                    fontWeight: FontWeight.w500
                   ),
                   decoration: InputDecoration(
                     suffixIcon: GestureDetector(

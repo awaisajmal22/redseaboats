@@ -67,6 +67,12 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           homeAppBar(
+                            membershipCallback: (){
+                              Get.toNamed(AppRoutes.membershipView);
+                            },
+                            notificationCallback: (){
+                              Get.toNamed(AppRoutes.notificationView);
+                            },
                         title: 'Current Location'
                       ),
                       Obx(

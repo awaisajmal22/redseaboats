@@ -81,7 +81,9 @@ class SplashView extends StatelessWidget {
             fadingDuration: Duration(seconds: 1),
             child: Column(
               children: [
-                appButton(voidCallback: (){}, widget: appText(text: 'Sign In', fontSize: SizeConfig.textMultiplier * 2.0 ), buttonHeight: SizeConfig.heightMultiplier * 6.0, butonWidth: SizeConfig.widthMultiplier * 100),
+                appButton(voidCallback: (){
+                  Get.toNamed(AppRoutes.loginView);
+                }, widget: appText(text: 'Sign In', fontSize: SizeConfig.textMultiplier * 2.0 ), buttonHeight: SizeConfig.heightMultiplier * 6.0, butonWidth: SizeConfig.widthMultiplier * 100),
                 SizedBox(
                   height: SizeConfig.heightMultiplier * 2.0,
                 ),
