@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../Common/AppColors/app_colors.dart';
-import '../../../../../Common/AppText/appText.dart';
-import '../../../../../Common/SizeConfig/size_config.dart';
+import '../AppColors/app_colors.dart';
+import '../AppText/appText.dart';
+import '../SizeConfig/size_config.dart';
 
 Widget orDivider() {
     return Row(

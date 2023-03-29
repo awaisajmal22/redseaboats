@@ -87,7 +87,9 @@ class SplashView extends StatelessWidget {
                 SizedBox(
                   height: SizeConfig.heightMultiplier * 2.0,
                 ),
-                appButton(voidCallback: (){}, widget: appText(text: 'Sign Up',fontSize: SizeConfig.textMultiplier * 2.0, textColor: AppColor.textBlack), buttonColor: AppColor.white, buttonHeight: SizeConfig.heightMultiplier * 6.0, butonWidth: SizeConfig.widthMultiplier * 100),
+                appButton(voidCallback: (){
+                  Get.toNamed(AppRoutes.signupView);
+                }, widget: appText(text: 'Sign Up',fontSize: SizeConfig.textMultiplier * 2.0, textColor: AppColor.textBlack), buttonColor: AppColor.white, buttonHeight: SizeConfig.heightMultiplier * 6.0, butonWidth: SizeConfig.widthMultiplier * 100),
                 SizedBox(
                   height: SizeConfig.heightMultiplier * 3.9,
                 )

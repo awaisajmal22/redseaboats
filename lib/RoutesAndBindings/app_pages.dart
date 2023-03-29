@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:redseaboats/App/AuthModule/Signup/View/signup_view.dart';
+import 'package:redseaboats/App/AuthModule/Signup/ViewModel/signup_view_model.dart';
 import 'package:redseaboats/App/BookingModule/Booking/View/booking_view.dart';
 import 'package:redseaboats/App/BookingModule/Booking/ViewModel/booking_view_model.dart';
 import 'package:redseaboats/App/BookingModule/BookingDateTime/View/booking_date_time_view.dart';
@@ -306,6 +308,13 @@ class AppPages{
         transition: Transition.fade,
         binding: BindingsBuilder(() {
           Get.lazyPut(() => LoginViewModel());
+        })),
+        GetPage(
+        name: AppRoutes.signupView, 
+        page: ()=> SignUpView(),
+        transition: Transition.fade,
+        binding: BindingsBuilder(() {
+          Get.lazyPut(() => SignUpViewModel());
         })),
   ];
 }

@@ -35,4 +35,5 @@ abstract class AppRoutes {
   static const bookingStarReviewView ='/bookingStarReview';
   static const notificationView = '/notificationView';
   static const loginView = '/loginView';
+  static const signupView = '/signupView';
 }
