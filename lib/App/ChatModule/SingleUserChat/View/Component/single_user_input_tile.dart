@@ -27,7 +27,7 @@ Widget singleUserInputTile({
       children: [
         Expanded(
           child: Container(
-            // margin: EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.0),
+            margin: EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.0),
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: AppColor.whiteFC,
