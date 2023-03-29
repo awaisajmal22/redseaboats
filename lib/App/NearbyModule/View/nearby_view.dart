@@ -33,6 +33,21 @@ class NearByView extends StatelessWidget {
                     child: customAppBar(title: 'Current Location')),
                 ),
                 Positioned(
+                  bottom: SizeConfig.heightMultiplier * 15.2,
+                  right: SizeConfig.widthMultiplier * 5.0,
+                  child: Container(
+                    alignment: Alignment.center,
+                    height: SizeConfig.heightMultiplier * 7.0,
+                    width: SizeConfig.widthMultiplier * 14.0,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColor.white
+                    ),
+                    child: const Icon(FontAwesomeIcons.locationCrosshairs, color: AppColor.parrotGreen,),
+                  ),
+                  
+                ),
+                Positioned(
                   left: 0,
                   right: 0,
                   bottom: SizeConfig.heightMultiplier * 2.0,
