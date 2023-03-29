@@ -65,7 +65,7 @@ Widget singleUserInputTile({
                   ),
                 ),
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     GestureDetector(
