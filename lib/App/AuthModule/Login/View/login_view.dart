@@ -81,6 +81,7 @@ class LoginView extends StatelessWidget {
                 ),
                 Obx(
                   () => customFormField(
+                    textInputAction: TextInputAction.done,
                       obsecureText: loginVM.isObsecure.value,
                       isObsecure: () {
                         loginVM.isObsecure.value = !loginVM.isObsecure.value;

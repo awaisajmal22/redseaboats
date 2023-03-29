@@ -111,7 +111,9 @@ final signupVM = Get.find<SignUpViewModel>();
                   height: 1,
                   width: SizeConfig.widthMultiplier * 100,
                   color: AppColor.textGrey.withOpacity(0.20),
-                ), customFormField(
+                ),
+                 customFormField(
+                  keyBoeardType: TextInputType.phone,
                       isObsecure: () {
                       },
                       validator: (value) {},
@@ -152,6 +154,7 @@ final signupVM = Get.find<SignUpViewModel>();
                     width: SizeConfig.widthMultiplier * 100,
                     color: AppColor.textGrey.withOpacity(0.20),
                   ), customFormField(
+                    textInputAction: TextInputAction.done,
                     obsecureText: signupVM.obsecureText2.value,
                         isObsecure: () {
                           signupVM.obsecureText2.value = !signupVM.obsecureText2.value;
