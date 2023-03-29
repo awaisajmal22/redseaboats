@@ -15,7 +15,7 @@ Widget singleUserInputTile({
     padding: EdgeInsets.symmetric(
         horizontal: SizeConfig.widthMultiplier * 5.0,
         vertical: SizeConfig.heightMultiplier * 1.0),
-    height: SizeConfig.heightMultiplier * 10,
+    height: SizeConfig.heightMultiplier * 8,
     decoration: BoxDecoration(
         color: AppColor.white.withOpacity(1),
         border: Border(
@@ -27,7 +27,6 @@ Widget singleUserInputTile({
       children: [
         Expanded(
           child: Container(
-            margin: EdgeInsets.symmetric(vertical: SizeConfig.heightMultiplier * 1.0),
             alignment: Alignment.center,
             decoration: BoxDecoration(
                 color: AppColor.whiteFC,
