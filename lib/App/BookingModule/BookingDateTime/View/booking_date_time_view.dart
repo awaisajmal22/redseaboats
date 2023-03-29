@@ -12,6 +12,7 @@ import 'package:redseaboats/Common/AppButton/app_button.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
+import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../RoutesAndBindings/app_routes.dart';
 import 'Component/bottom_sheet.dart';
@@ -40,27 +41,29 @@ class BookingDateTimeView extends StatelessWidget {
           SizedBox(
             height: SizeConfig.heightMultiplier * 2.0,
           ),
+          
           Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(14),
-                color: AppColor.white,
-                boxShadow: [
-                  BoxShadow(
-                      color: AppColor.shadowColor1A.withOpacity(0.15),
-                      offset: const Offset(0, 8),
-                      blurRadius: 15)
-                ]),
-            padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.widthMultiplier * 4,
-                vertical: SizeConfig.heightMultiplier * 2.0),
-            height: SizeConfig.heightMultiplier * 40,
-            child: CalendarDatePicker(
-                initialCalendarMode: DatePickerMode.day,
-                initialDate: DateTime.now(),
-                firstDate: DateTime(1950),
-                lastDate: DateTime(2600),
-                onDateChanged: (value) {}),
-          ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(14),
+                  color: AppColor.white,
+                  boxShadow: [
+                    BoxShadow(
+                        color: AppColor.shadowColor1A.withOpacity(0.15),
+                        offset: const Offset(0, 8),
+                        blurRadius: 15)
+                  ]),
+              padding: EdgeInsets.symmetric(
+                  horizontal: SizeConfig.widthMultiplier * 4,
+                  vertical: SizeConfig.heightMultiplier * 2.0),
+              // height: SizeConfig.heightMultiplier * 52,
+              child: CalendarTile(
+                onFocusChange: (value){
+                   bookingDateTimeVM.getselectedMonth(value!.month.toInt());
+                },
+                dateTimeCallback: (selectedDay, focusedDay) {
+           
+          },
+              )),
           SizedBox(
             height: SizeConfig.heightMultiplier * 3.0,
           ),
@@ -111,14 +114,14 @@ class BookingDateTimeView extends StatelessWidget {
           appButton(
               butonWidth: SizeConfig.widthMultiplier * 100,
               buttonHeight: SizeConfig.heightMultiplier * 6.8,
-              voidCallback: (){
+              voidCallback: () {
                 Get.back();
                 bottomSheet(
-                  continueCallback: (){
-                    Get.toNamed(AppRoutes.bookingReview);
-                  },
-                  emiratesIdCallback: (){}, 
-                  passportCallback: (){});
+                    continueCallback: () {
+                      Get.toNamed(AppRoutes.bookingReview);
+                    },
+                    emiratesIdCallback: () {},
+                    passportCallback: () {});
               },
               widget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -141,5 +144,71 @@ class BookingDateTimeView extends StatelessWidget {
     );
   }
 
-  
+  Widget CalendarTile(
+    {
+      // ignore: avoid_types_as_parameter_names
+      required Function(DateTime?)? onFocusChange,
+      required Function(DateTime, DateTime)? dateTimeCallback
+    }
+  ) {
+    return Column(
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Obx(()=> appText(text: bookingDateTimeVM.monthList[bookingDateTimeVM.selectedMonth.value], textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 2.0 ,fontWeight: FontWeight.w400)),
+            appText(text: 'November', textColor: AppColor.textGrey, fontSize: SizeConfig.textMultiplier * 1.75 ,fontWeight: FontWeight.w400),
+          ],
+        ),
+        SizedBox(
+          height: SizeConfig.heightMultiplier * 1.55,
+        ),
+        Container(
+          width: SizeConfig.widthMultiplier * 100,
+          height: 1,
+          color: AppColor.textGrey.withOpacity(0.3),
+        ),
+        SizedBox(
+          height: SizeConfig.heightMultiplier * 2.0,
+        ),
+
+        TableCalendar(
+          onPageChanged: onFocusChange as DateTime? Function(DateTime?),
+          onDaySelected: dateTimeCallback as DateTime? Function(DateTime, DateTime),
+                  daysOfWeekVisible: true,
+                  daysOfWeekStyle: const DaysOfWeekStyle(
+                    weekdayStyle: TextStyle(
+                      color: AppColor.red
+                    ),
+                    weekendStyle: TextStyle(
+                      color: AppColor.red
+                    )
+                  ),
+                    calendarStyle: CalendarStyle(
+                      todayDecoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: AppColor.parrotGreen
+                      ),
+                        todayTextStyle: TextStyle(
+                          
+                            fontSize: SizeConfig.textMultiplier * 2.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w500)),
+                    headerVisible: false,
+                    focusedDay: DateTime.now(),
+                    firstDay: DateTime(2000),
+                    lastDay: DateTime(3000)),
+      ],
+    );
+  }
+
+  dateTime({
+    required BuildContext context,
+  }) {
+    showDatePicker(
+        context: context,
+        initialDate: DateTime.now(),
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2600));
+  }
 }
