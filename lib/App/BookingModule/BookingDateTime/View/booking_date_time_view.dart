@@ -56,13 +56,17 @@ class BookingDateTimeView extends StatelessWidget {
                   horizontal: SizeConfig.widthMultiplier * 4,
                   vertical: SizeConfig.heightMultiplier * 2.0),
               // height: SizeConfig.heightMultiplier * 52,
-              child: CalendarTile(
-                onFocusChange: (value){
-                   bookingDateTimeVM.getselectedMonth(value!.month.toInt());
-                },
-                dateTimeCallback: (selectedDay, focusedDay) {
-           
-          },
+              child: Obx(
+                ()=> CalendarTile(
+                  nextMonth: bookingDateTimeVM.monthList[bookingDateTimeVM.selectedMonth.value + 1],
+                  month: bookingDateTimeVM.monthList[bookingDateTimeVM.selectedMonth.value],
+                  onFocusChange: (value){
+                     bookingDateTimeVM.getselectedMonth(value!.month.toInt());
+                  },
+                  dateTimeCallback: (selectedDay, focusedDay) {
+                         
+                        },
+                ),
               )),
           SizedBox(
             height: SizeConfig.heightMultiplier * 3.0,
@@ -148,7 +152,9 @@ class BookingDateTimeView extends StatelessWidget {
     {
       // ignore: avoid_types_as_parameter_names
       required Function(DateTime?)? onFocusChange,
-      required Function(DateTime, DateTime)? dateTimeCallback
+      required Function(DateTime, DateTime)? dateTimeCallback,
+      required String month,
+      required String nextMonth
     }
   ) {
     return Column(
@@ -156,8 +162,8 @@ class BookingDateTimeView extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Obx(()=> appText(text: bookingDateTimeVM.monthList[bookingDateTimeVM.selectedMonth.value], textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 2.0 ,fontWeight: FontWeight.w400)),
-            appText(text: 'November', textColor: AppColor.textGrey, fontSize: SizeConfig.textMultiplier * 1.75 ,fontWeight: FontWeight.w400),
+            appText(text: month, textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 2.0 ,fontWeight: FontWeight.w400),
+            appText(text: nextMonth, textColor: AppColor.textGrey, fontSize: SizeConfig.textMultiplier * 1.75 ,fontWeight: FontWeight.w400),
           ],
         ),
         SizedBox(
