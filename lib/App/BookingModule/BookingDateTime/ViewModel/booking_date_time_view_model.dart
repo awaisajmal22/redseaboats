@@ -21,7 +21,7 @@ class BookingDateTimeViewModel extends GetxController {
   }
   getCurrentToNextMonth(int value){
     if(selectedMonth.value == 12){
-       nextMonth.value = (value - 1) % 11;
+       nextMonth.value = (selectedMonth.value - 1) % 11;
     }
     else {
        nextMonth.value = (value) % 11;

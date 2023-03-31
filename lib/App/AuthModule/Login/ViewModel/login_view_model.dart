@@ -3,10 +3,14 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:redseaboats/App/AuthModule/Login/Services/login_services.dart';
 
 import '../View/Component/pincode_bottom_sheet.dart';
 
 class LoginViewModel extends GetxController{
+  final emailValid =  RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+   final passValid = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
+  final formKey = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final forgetPasswordEmailController = TextEditingController();
@@ -19,6 +23,7 @@ class LoginViewModel extends GetxController{
     'New Password',
     'Confirm Password'
   ];
+
 
    Timer? timer;
   int remainingSeconds = 0;
@@ -56,5 +61,14 @@ class LoginViewModel extends GetxController{
         remainingSeconds--;
       }
     });
+  }
+
+  Future<bool?> onLoginUser({
+    required String email, required String password
+  }) async {
+    bool? isSuccess = await onlogin(email: email, password: password);
+    print('$isSuccess' + 'saassa');
+    return isSuccess;
+
   }
 }

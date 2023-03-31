@@ -21,6 +21,8 @@ class InterestView extends StatelessWidget {
         child: appButton(
           butonWidth: SizeConfig.widthMultiplier * 100,
           voidCallback: (){
+            interestVM.getInterest();
+            print(interestVM.dataList.length);
             Get.toNamed(AppRoutes.homeView);
           }, widget: appText(text: 'Get Started')),
       ),
@@ -44,33 +46,35 @@ class InterestView extends StatelessWidget {
             ),
             SizedBox(
               height: SizeConfig.heightMultiplier * 60,
-              child: GridView.builder(
-                itemCount: interestVM.interestList.length,
-              padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisSpacing: SizeConfig.heightMultiplier * 2.0,
-                crossAxisSpacing: SizeConfig.widthMultiplier * 5.2,
-                crossAxisCount: 2
-                ), 
-              itemBuilder: (context, index){
-                return Obx(
-                  ()=> interestTile(
-                  voidCallback: (){
-                    interestVM.interestList[index].check.value = !interestVM.interestList[index].check.value;
-                  },
-                  title: interestVM.interestList[index].title,
-                  imageUrl: interestVM.interestList[index].imageUrl,
-                  check: interestVM.interestList[index].check.value
-                
-                  ),
-                );
-              }))
+              child: Obx(
+                ()=> GridView.builder(
+                  itemCount: interestVM.dataList.length,
+                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: SizeConfig.heightMultiplier * 2.0,
+                  crossAxisSpacing: SizeConfig.widthMultiplier * 5.2,
+                  crossAxisCount: 2
+                  ), 
+                itemBuilder: (context, index){
+                  return Obx(
+                    ()=> interestTile(
+                    voidCallback: (){
+                      interestVM.dataList[index].isActive = !interestVM.dataList[index].isActive!;
+                    },
+                    title: interestVM.dataList[index].name!,
+                    imageUrl: interestVM.dataList[index].photoUrl!,
+                    check: interestVM.dataList[index].isActive!
+                  
+                    ),
+                  );
+                }),
+              ))
           ],
         )),
     );
   }
 
-  GestureDetector interestTile({
+  Widget interestTile({
     required VoidCallback voidCallback,
     required String title,
     required String imageUrl,
