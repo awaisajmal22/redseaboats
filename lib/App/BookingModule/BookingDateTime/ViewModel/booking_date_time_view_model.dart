@@ -8,9 +8,10 @@ class BookingDateTimeViewModel extends GetxController {
     '7:00 PM to 8:00 PM',
     '9:00 PM to 10:00 PM'
   ];
-  RxInt selectedMonth = 0.obs;
+  RxInt selectedMonth = DateTime.now().month.obs;
   getselectedMonth(int value){
     selectedMonth.value = value;
+    
   }
   List monthList = [
     'January',
@@ -29,8 +30,9 @@ class BookingDateTimeViewModel extends GetxController {
   
  @override
   void onInit() {
+   
     // TODO: implement onInit
     super.onInit();
-    getselectedMonth;
+     getselectedMonth;
   }
 }

@@ -55,7 +55,7 @@ bottomSheet({
                           fontSize: SizeConfig.textMultiplier * 2.0),
                       GestureDetector(
                         onTap: () {
-                          Get.offNamed(AppRoutes.bookingDetailView);
+                          Get.back();
                         },
                         child: Row(
                           mainAxisSize: MainAxisSize.min,

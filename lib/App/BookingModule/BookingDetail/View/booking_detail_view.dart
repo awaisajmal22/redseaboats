@@ -215,6 +215,7 @@ class BookingDetailView extends StatelessWidget {
                             });
                       },
                       rescheduleBookingCallback: () {
+                        Get.back();
                         Get.toNamed(AppRoutes.bookingDateTimeView,);
                       });
                 },
