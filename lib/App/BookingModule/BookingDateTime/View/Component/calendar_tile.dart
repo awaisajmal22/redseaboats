@@ -37,6 +37,7 @@ Widget CalendarTile(
         ),
 
         TableCalendar(
+          calendarFormat: CalendarFormat.month,
           onPageChanged: onFocusChange as DateTime? Function(DateTime?),
           onDaySelected: dateTimeCallback as DateTime? Function(DateTime, DateTime),
                   daysOfWeekVisible: true,

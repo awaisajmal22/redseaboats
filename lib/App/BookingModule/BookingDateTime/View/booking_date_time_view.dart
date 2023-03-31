@@ -59,11 +59,12 @@ class BookingDateTimeView extends StatelessWidget {
               // height: SizeConfig.heightMultiplier * 52,
               child: Obx(
                 ()=> CalendarTile(
-                  nextMonth: bookingDateTimeVM.monthList[bookingDateTimeVM.selectedMonth.value],
-                  month: bookingDateTimeVM.monthList[bookingDateTimeVM.selectedMonth.value - 1],
+                  nextMonth: bookingDateTimeVM.getNextMonth(),
+                  month: bookingDateTimeVM.getCurrentMonth(),
                   onFocusChange: (value){
-                     bookingDateTimeVM.getselectedMonth(value!.month.toInt());
-                     print(DateTime.january);
+                    bookingDateTimeVM.getCurrentToNextMonth(value!.month.toInt());
+                     bookingDateTimeVM.getselectedMonth(value.month.toInt());
+                     print(DateTime.december);
                   },
                   dateTimeCallback: (selectedDay, focusedDay) {
                          

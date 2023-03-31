@@ -9,9 +9,27 @@ class BookingDateTimeViewModel extends GetxController {
     '9:00 PM to 10:00 PM'
   ];
   RxInt selectedMonth = DateTime.now().month.obs;
+  RxInt nextMonth = DateTime.now().month.obs;
+
   getselectedMonth(int value){
-    selectedMonth.value = value;
-    
+    selectedMonth.value = (value) % 11;
+   
+  }
+
+  String getCurrentMonth() {
+    return monthList[selectedMonth.value - 1];
+  }
+  getCurrentToNextMonth(int value){
+    if(selectedMonth.value == 12){
+       nextMonth.value = (value - 1) % 11;
+    }
+    else {
+       nextMonth.value = (value) % 11;
+    }
+   
+  }
+  String getNextMonth() {
+    return monthList[nextMonth.value];
   }
   List monthList = [
     'January',
@@ -34,5 +52,6 @@ class BookingDateTimeViewModel extends GetxController {
     // TODO: implement onInit
     super.onInit();
      getselectedMonth;
+     getCurrentToNextMonth;
   }
 }
