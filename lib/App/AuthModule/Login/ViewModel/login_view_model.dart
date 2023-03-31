@@ -4,6 +4,8 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../View/Component/pincode_bottom_sheet.dart';
+
 class LoginViewModel extends GetxController{
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -23,15 +25,22 @@ class LoginViewModel extends GetxController{
   final time = '00:00'.obs;
   
   @override
+  void onInit() {
+    // TODO: implement onInit
+    super.onInit();
+    pinCodeBottomSheet;
+  }
+  @override
   void onClose() {
 
-    if (timer != null) {
-      timer!.cancel();
-    }
+   
     for(int i = 0; i < 4; i++){
       pinFocusNodes[i].dispose();
     }
     super.onClose();
+     if (timer != null) {
+      timer!.cancel();
+    }
   }
 
   startTimer(int seconds) {

@@ -115,9 +115,10 @@ class LoginView extends StatelessWidget {
                         loginVM.startTimer(36);
                         pinCodeBottomSheet(
                             resendCodeCallback: () {
-                              print('ok');
+                              print(loginVM.time.value);
+                             
                               if (loginVM.time.value == '00:00') {
-                                loginVM.timer!.cancel();
+                                 loginVM.timer!.cancel();
                                 loginVM.startTimer(36);
                               }
                             },
