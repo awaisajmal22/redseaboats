@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:redseaboats/App/InterestModule/Services/interest_servies.dart';
 import 'package:redseaboats/App/InterestModule/ViewModel/interest_view_model.dart';
 import 'package:redseaboats/Common/AppButton/app_button.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
@@ -21,8 +22,6 @@ class InterestView extends StatelessWidget {
         child: appButton(
           butonWidth: SizeConfig.widthMultiplier * 100,
           voidCallback: (){
-            interestVM.getInterest();
-            print(interestVM.dataList.length);
             Get.toNamed(AppRoutes.homeView);
           }, widget: appText(text: 'Get Started')),
       ),
@@ -48,7 +47,7 @@ class InterestView extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 60,
               child: Obx(
                 ()=> GridView.builder(
-                  itemCount: interestVM.dataList.length,
+                  itemCount: interestVM.newInterestList.length,
                 padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: SizeConfig.heightMultiplier * 2.0,
@@ -59,11 +58,11 @@ class InterestView extends StatelessWidget {
                   return Obx(
                     ()=> interestTile(
                     voidCallback: (){
-                      interestVM.dataList[index].isActive = !interestVM.dataList[index].isActive!;
+                      interestVM.newInterestList[index].isActive = !interestVM.newInterestList[index].isActive!;
                     },
-                    title: interestVM.dataList[index].name!,
-                    imageUrl: interestVM.dataList[index].photoUrl!,
-                    check: interestVM.dataList[index].isActive!
+                    title: interestVM.newInterestList[index].name!,
+                    imageUrl: interestVM.newInterestList[index].photoUrl!,
+                    check: interestVM.newInterestList[index].isActive!
                   
                     ),
                   );

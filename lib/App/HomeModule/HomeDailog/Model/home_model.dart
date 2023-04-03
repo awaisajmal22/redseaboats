@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-class HomeModel{
+class HomeModel2{
   final String imageUrl;
   final String title;
   final String discount;
@@ -9,7 +9,7 @@ class HomeModel{
   final String location;
   final String price;
   RxBool favorite;
-  HomeModel({
+  HomeModel2({
     required this.imageUrl,
     required this.title,
     required this.discount,

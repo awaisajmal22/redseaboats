@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:redseaboats/App/AuthModule/Login/Services/login_services.dart';
 import 'package:redseaboats/Common/AppButton/app_button.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
@@ -75,7 +76,7 @@ class LoginView extends StatelessWidget {
                       isObsecure: () {},
                       validator: (value) {
                         if(value!.isEmpty){
-                          return "Please enter your email address";
+                          return "Email is required";
                         }else if(!loginVM.emailValid.hasMatch(value)){
                           return'Please Enter the valid email address';
                         }
@@ -122,44 +123,60 @@ class LoginView extends StatelessWidget {
             ),
             Align(
               alignment: Alignment.centerRight,
-              child: GestureDetector(
-                  onTap: () {
-                    forgetPasswordBottomSheet(
-                        submitCallback: () {
-                          Get.back();
-                          loginVM.startTimer(36);
-                          pinCodeBottomSheet(
-                              resendCodeCallback: () {
-                                print(loginVM.time.value);
-                               
-                                if (loginVM.time.value == '00:00') {
-                                   loginVM.timer!.cancel();
-                                  loginVM.startTimer(36);
-                                }
-                              },
-                              remaningTime: loginVM.time,
-                              verifyCallback: () {
-                                Get.back();
-                                loginVM.timer!.cancel();
-                                resetPasswordBottomSheet(
-                                    resetCallback: () {
-                                      Get.back();
-                                    },
-                                    obecureText: loginVM.resetPasswordIsObsecure,
-                                    hintText: loginVM.resetPasswordHintText,
-                                    controller: loginVM.resetPasswordController);
-                              },
-                              pinController: loginVM.pinControllers,
-                              focusNode: loginVM.pinFocusNodes);
+              child: Builder(
+                builder: (context) {
+                  return GestureDetector(
+                      onTap: () {
+                        
+                          forgetPasswordBottomSheet(
+                          emailValid: loginVM.emailValid,
+                          formKey: loginVM.formKey2,
+                            submitCallback: () {
+                              if(loginVM.formKey2.currentState!.validate()){
+                             loginVM.forgetPasswordUser(email: loginVM.forgetPasswordEmailController.text);
+                              Get.back();
+                              loginVM.startTimer(36);
+                              if(loginVM.formKey2.currentState!.validate()) {
+                                pinCodeBottomSheet(
+                                  resendCodeCallback: () {
+                                    print(loginVM.time.value);
+                                   
+                                    if (loginVM.time.value == '00:00') {
+                                       loginVM.timer!.cancel();
+                                      loginVM.startTimer(36);
+                                    }
+                                  },
+                                  remaningTime: loginVM.time,
+                                  verifyCallback: () {
+                                    Get.back();
+                                    loginVM.timer!.cancel();
+                                    resetPasswordBottomSheet(
+                                      validation: (value) {
+                                          if(value!.isEmpty && value.length < 1){
+                                            return '';
+                                          }
+                                        },
+                                        resetCallback: () {
+                                          Get.back();
+                                        },
+                                        obecureText: loginVM.resetPasswordIsObsecure,
+                                        hintText: loginVM.resetPasswordHintText,
+                                        controller: loginVM.resetPasswordController);
+                                  },
+                                  pinController: loginVM.pinControllers,
+                                  focusNode: loginVM.pinFocusNodes);
+                              }
+                            }},
+                            controller: loginVM.forgetPasswordEmailController);
                         },
-                        controller: loginVM.forgetPasswordEmailController);
-                  },
-                  child: appText(
-                      text: 'Forgot Password?',
-                      textColor: AppColor.textGrey,
-                      fontSize: SizeConfig.textMultiplier * 2.0,
-                      textAlign: TextAlign.left,
-                      fontWeight: FontWeight.w400)),
+                      child: appText(
+                          text: 'Forgot Password?',
+                          textColor: AppColor.textGrey,
+                          fontSize: SizeConfig.textMultiplier * 2.0,
+                          textAlign: TextAlign.left,
+                          fontWeight: FontWeight.w400));
+                }
+              ),
             ),
             SizedBox(
               height: SizeConfig.heightMultiplier * 3.0,

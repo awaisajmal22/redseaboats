@@ -11,6 +11,7 @@ resetPasswordBottomSheet(
       {required List<TextEditingController> controller,
       required List hintText,
       required List<RxBool> obecureText,
+      required Function(String?)? validation,
       required VoidCallback resetCallback}) {
     Get.bottomSheet(
         isDismissible: false,
@@ -75,13 +76,14 @@ resetPasswordBottomSheet(
                                 borderRadius: BorderRadius.circular(8)),
                             child: Obx(
                               () => customFormField(
+                                keyBoeardType: TextInputType.number,
                                   obsecureText: obecureText[i].value,
                                   textInputAction: TextInputAction.done,
                                   isObsecure: () {
                                     obecureText[i].value =
                                         !obecureText[i].value;
                                   },
-                                  validator: (value) {},
+                                  validator: validation as String? Function(String?),
                                   suffixIcon: obecureText[i].value == true
                                       ? const Icon(
                                           Icons.visibility,

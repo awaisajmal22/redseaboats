@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:redseaboats/App/InterestModule/Model/interest_model.dart';
@@ -17,43 +19,22 @@ class InterestViewModel extends GetxController{
   //   InterestModel2(imageUrl: 'https://cdn.pixabay.com/photo/2023/02/10/07/59/fox-7780326__340.jpg', title: 'Cruises', check: false.obs),
   //   InterestModel2(imageUrl: 'https://cdn.pixabay.com/photo/2023/01/07/10/02/leaves-7702922__340.jpg', title: 'Water Sports', check: false.obs),
   // ].obs;
-// Rx<InterestModel>? interestModel = InterestModel().obs;
 
+final dataList = [].obs;
   @override
   void onInit() {
    
     // TODO: implement onInit
     super.onInit();
-     getInterest();
-   
+   fetchinginterestData();
   }
-RxList<InterestModel> dataList = <InterestModel>[].obs;
-// ignore: non_constant_identifier_names
+ RxList<InterestDataModel> newInterestList = <InterestDataModel>[].obs;
+ 
+ void fetchinginterestData() async {
+  List<InterestDataModel> data = await InterestServices().getInterest();
+  newInterestList.value = data;
+ }
 
-Future<void> getInterest() async {
 
-try{
-  var response = await API().getRequest(GetApiUrl.interest);
-  
-  if(response.statusCode == 200){
-    print(response.data);
-    final List<dynamic>  data = response.data;
-   this.dataList.assignAll( data.map((json) => InterestModel.fromJson(json.data["data"])).toList());
-  }else if(response.statusCode == 401){
-    
-    print('Expire');
-  }else {
-    throw Exception('Failed to load users');
-  }
-} catch (e){}
-}
-// List<InterestModel> get interestData => dataList.toList();
-//   Future<void> loadData() async {
-//     final interest = storage.read('interest');
-//     if(interest != null){
-//       final List<dynamic> interestList = interest;
-//       dataList.assignAll(interestList.map((element) => InterestModel.fromJson(element as Map<String, dynamic>)).toList());
-
-//     }
-//   }
+//
 }

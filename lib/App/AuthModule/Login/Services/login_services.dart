@@ -34,3 +34,28 @@ Future<bool?> onlogin({
   }
   return isSuccess;
 }
+
+Future<bool?> onforgetPasswordServices({required String email}) async {
+  bool? isSuccess = false;
+
+  try{
+  var data = {
+    "email": email
+  };
+
+  var response = await API().postRequest(PostApiUrl.forgetPasswordUrl, data);
+  print(response.data);
+  if(response == null){
+    print('Error');
+
+  }else if(response.data['isSuccess'] == true){
+    isSuccess = response.data['isSuccess'];
+    ShowMessage().showMessage(response.data['message'].toString());
+  }else {
+    ShowMessage().showErrorMessage(response.data['message'].toString());
+  }
+  } catch (e){
+    print(e.toString());
+  }
+  return isSuccess;
+}

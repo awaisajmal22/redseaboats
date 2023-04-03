@@ -94,6 +94,7 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                   right: 0, top: 0,
                   child: GestureDetector(
                     onTap: (){
+                      print(homeVM.dataList.length);
                       Get.back();
                       homeVM.isDailogCheck.value = true;
                     },

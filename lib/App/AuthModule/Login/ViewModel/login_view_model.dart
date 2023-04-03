@@ -11,6 +11,7 @@ class LoginViewModel extends GetxController{
   final emailValid =  RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
    final passValid = RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
   final formKey = GlobalKey<FormState>();
+  final formKey2 = GlobalKey<FormState>();
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final forgetPasswordEmailController = TextEditingController();
@@ -70,5 +71,13 @@ class LoginViewModel extends GetxController{
     print('$isSuccess' + 'saassa');
     return isSuccess;
 
+  }
+
+
+  Future<bool?> forgetPasswordUser({
+    required String email
+  }) async {
+    bool? isSuccess = await onforgetPasswordServices(email: email);
+    return isSuccess;
   }
 }

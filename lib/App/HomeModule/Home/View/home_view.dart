@@ -304,7 +304,9 @@ final favoriteVM = Get.find<FavoriteViewModel>();
               ),
                Padding(padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
               child: seeAllTitleTile(
-                seeAllCallBack: (){},
+                seeAllCallBack: (){
+                  print(homeVM.dataList.length);
+                },
                 title: 'Nearby Attractions'
               ),),
               SizedBox(
