@@ -115,8 +115,8 @@ class CategoryItemDetailView extends StatelessWidget {
                               !homeVM.homDailogList[index].favorite.value;
                           if (homeVM.homDailogList[index].favorite.value ==
                               true) {
-                            favoriteVM.favoriteList
-                                .add(homeVM.homDailogList[index]);
+                            // favoriteVM.favoriteList
+                            //     .add(homeVM.homDailogList[index]);
                           } else {
                             favoriteVM.favoriteList
                                 .remove(homeVM.homDailogList[index]);

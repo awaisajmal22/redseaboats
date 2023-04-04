@@ -19,21 +19,23 @@ class FavoriteView extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
         itemBuilder: (context, oldIndex) {
          final  index = (favoriteVM.favoriteList.length - 1) - oldIndex;
-        return Obx(
+         for(int i = 0; i < favoriteVM.favoriteList[index].slots.length; i++) {
+           return Obx(
           ()=> favoriteTile(
             isFavoriteCallback: (){
               
-            }, isFavorite: favoriteVM.favoriteList[index].favorite.value, 
-            discount: favoriteVM.favoriteList[index].discount, 
+            }, isFavorite: favoriteVM.favoriteList[index].isLiked, 
+            discount: '50', 
             ratingCallback: (value){} ,
-            initialRating: 3, 
+            initialRating: favoriteVM.favoriteList[index].ratingCount.toDouble(), 
             title: favoriteVM.favoriteList[index].title, 
-            subtitle: favoriteVM.favoriteList[index].subtitle, 
-            location: favoriteVM.favoriteList[index].location, 
-            price: favoriteVM.favoriteList[index].price, 
-            imageUrl: favoriteVM.favoriteList[index].imageUrl
+            subtitle: favoriteVM.favoriteList[index].status, 
+            location: favoriteVM.favoriteList[index].location.title, 
+            price: favoriteVM.favoriteList[index].slots[i].price.toString(), 
+            imageUrl: favoriteVM.favoriteList[index].photoUrl
             ),
         );
+         }
       }),
     );
   }

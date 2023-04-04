@@ -112,7 +112,15 @@ Widget homeServicesTile(
                                SizedBox(
                                  width: SizeConfig.widthMultiplier * 2.0,
                                ),
-                               appText(text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400)
+                               Container(
+                                alignment: Alignment.centerLeft,
+                                width: SizeConfig.widthMultiplier * 35,
+                                 child: appText(
+                                  textAlign: TextAlign.left,
+                                  textOverFlow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400),
+                               )
                              ],
                            ),
                            Container(
@@ -122,7 +130,7 @@ Widget homeServicesTile(
                                borderRadius: BorderRadius.circular(4),
                                color: AppColor.parrotGreen
                              ),
-                             child: appText(text: price, fontSize: SizeConfig.textMultiplier * 1.46, ),
+                             child: appText(text: 'AED $price/hr', fontSize: SizeConfig.textMultiplier * 1.46, ),
                            )
                          ],
                        )
@@ -135,3 +143,5 @@ Widget homeServicesTile(
                 ),
               );
   }
+
+  

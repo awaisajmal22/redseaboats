@@ -7,6 +7,7 @@ import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 
+import '../../../../Common/Shimmer/shimmer.dart';
 import '../../../ProfileModule/Favorite/ViewModel/favroite_view_model.dart';
 import '../../Home/ViewModel/home_view_model.dart';
 import 'Component/featured_Tile.dart';
@@ -50,42 +51,51 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                         SizedBox(
                           height: SizeConfig.heightMultiplier * 2.0,
                         ),
-                        SizedBox(
-                          height: SizeConfig.heightMultiplier * 50,
-                          child: ListView.builder(
-                            padding: const EdgeInsets.symmetric(horizontal: 7.5),
-                            itemCount: homeVM.homDailogList.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index){
-                            return Obx(
-                              ()=> featuredTile(
-                                imageUrl: homeVM.homDailogList[index].imageUrl,
-                        ratingTitle: '1658',
-                        context: context,
-                        initialRating: 3.0,
-                        ratingCallback: (rating){},
-                        index: index,
-                        length: homeVM.homDailogList.length,
-                        callBack: (){},
-                        isFavorite: homeVM.homDailogList[index].favorite.value, 
-                        isFavoriteCallback: (){
-                          homeVM.homDailogList[index].favorite.value = !homeVM.homDailogList[index].favorite.value;
-                          if(homeVM.homDailogList[index].favorite.value == true){
-                        favoriteVM.favoriteList.add(homeVM.homDailogList[index]);
-                      }
-                      else {
-                        favoriteVM.favoriteList.remove(homeVM.homDailogList[index]);
-                      }
-                        }, 
-                        discount: homeVM.homDailogList[index].discount, 
-                        title: homeVM.homDailogList[index].title, 
-                        subtitle: homeVM.homDailogList[index].subtitle, 
-                        description: homeVM.homDailogList[index].description, 
-                        location: homeVM.homDailogList[index].location, 
-                        price: homeVM.homDailogList[index].price
-                        ),
-                            );
-                          }),
+                        Obx(
+                          ()=> SizedBox(
+                            height: SizeConfig.heightMultiplier * 50,
+                            child:  ListView.builder(
+                              padding: const EdgeInsets.symmetric(horizontal: 7.5),
+                              itemCount: homeVM.dataModel.value.featuredServices  != null ? homeVM.dataModel.value.featuredServices!.length : 3,
+                              scrollDirection: Axis.horizontal,
+                              itemBuilder: (context, index){
+                                var data =  homeVM.dataModel.value.featuredServices;
+                              if(homeVM.dataModel.value.featuredServices  != null){  for(int i = 0; i < homeVM.dataModel.value.featuredServices![index].slots.length; i++) {
+                                  return featuredTile(
+                                  imageUrl: data![index].photoUrl,
+                          ratingTitle: data[index].totalRating.toString(),
+                          context: context,
+                          initialRating: data[index].ratingCount.toDouble(),
+                          ratingCallback: (rating){},
+                          index: index,
+                          length: data.length,
+                          callBack: (){},
+                          isFavorite: data[index].isLiked, 
+                          isFavoriteCallback: (){
+                            data[index].isLiked = !data[index].isLiked;
+                            if(data[index].isLiked == true){
+                                             favoriteVM.favoriteList.add(data[index]);
+                                              }
+                                              else {
+                          favoriteVM.favoriteList.remove(homeVM.homDailogList[index]);
+                                              }
+                          }, 
+                          discount: '30', 
+                          title:data[index].title, 
+                          subtitle: data[index].status, 
+                          description: data[index].description, 
+                          location: data[index].location.title, 
+                          price: data[index].slots[i].price.toString()
+                          );
+                                }
+                                
+                              } else {
+                                return shimmer(
+                            Widget: shimmerfeaturedTile()
+                          );
+                              }
+                            }),
+                          ),
                         )
                       ],
                     ),
@@ -94,7 +104,9 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                   right: 0, top: 0,
                   child: GestureDetector(
                     onTap: (){
-                      print(homeVM.dataList.length);
+                      if(homeVM.dataModel.value != null) {
+                        print(homeVM.dataModel.value.banners);
+                      }
                       Get.back();
                       homeVM.isDailogCheck.value = true;
                     },

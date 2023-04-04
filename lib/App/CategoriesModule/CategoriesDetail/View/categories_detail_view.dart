@@ -59,14 +59,12 @@ class CategoriesDetailView extends StatelessWidget {
                 top: 0,
                 left: 0,
                 right: 0,
-                child: Obx(
-                  () => backgroundImageTile(
+                child:  backgroundImageTile(
                       imageUrl: imageURl,
-                      isFavorite: isFavorite.value,
+                      isFavorite: isFavorite,
                       favoriteCallback: () {
-                        isFavorite.value = !isFavorite.value;
+                        isFavorite = !isFavorite;
                       }),
-                ),
               ),
               ticketDetailTile(
                 amenitiesList: categoriesDetailVM.amenitiesList,
@@ -217,7 +215,7 @@ appText(
                     return Container(
                       margin: EdgeInsets.only(right: SizeConfig.widthMultiplier * 5.0),
                       child: categoriesTile(isFavoriteCallback: (){}, 
-                      isFavorite: isFavorite.value, discount: '30', ratingCallback: (value){}, initialRating: 3, title: 'title', subtitle: 'subtitle', location: 'location', price: 'price', imageUrl: imageURl, categoriesCallback: (){}),
+                      isFavorite: isFavorite,discount: '30', ratingCallback: (value){}, initialRating: 3, title: 'title', subtitle: 'subtitle', location: 'location', price: 'price', imageUrl: imageURl, categoriesCallback: (){}),
                     );
                    }),
                   ),

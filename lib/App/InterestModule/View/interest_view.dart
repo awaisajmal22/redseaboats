@@ -5,8 +5,11 @@ import 'package:redseaboats/App/InterestModule/ViewModel/interest_view_model.dar
 import 'package:redseaboats/Common/AppButton/app_button.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
+import 'package:redseaboats/Common/Shimmer/shimmer.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
 import 'package:redseaboats/RoutesAndBindings/app_routes.dart';
+
+import 'Component/interest_tile.dart';
 
 class InterestView extends StatelessWidget {
    InterestView({super.key});
@@ -47,16 +50,15 @@ class InterestView extends StatelessWidget {
               height: SizeConfig.heightMultiplier * 60,
               child: Obx(
                 ()=> GridView.builder(
-                  itemCount: interestVM.newInterestList.length,
-                padding: EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                  itemCount:interestVM.newInterestList.isNotEmpty ? interestVM.newInterestList.length : 6,
+                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: SizeConfig.heightMultiplier * 2.0,
                   crossAxisSpacing: SizeConfig.widthMultiplier * 5.2,
                   crossAxisCount: 2
                   ), 
                 itemBuilder: (context, index){
-                  return Obx(
-                    ()=> interestTile(
+                  return interestVM.newInterestList.isNotEmpty ? interestTile(
                     voidCallback: (){
                       interestVM.newInterestList[index].isActive = !interestVM.newInterestList[index].isActive!;
                     },
@@ -64,8 +66,7 @@ class InterestView extends StatelessWidget {
                     imageUrl: interestVM.newInterestList[index].photoUrl!,
                     check: interestVM.newInterestList[index].isActive!
                   
-                    ),
-                  );
+                  ) : shimmer(Widget: shimmerinterestTile());
                 }),
               ))
           ],
@@ -73,33 +74,5 @@ class InterestView extends StatelessWidget {
     );
   }
 
-  Widget interestTile({
-    required VoidCallback voidCallback,
-    required String title,
-    required String imageUrl,
-    required bool check
-  }) {
-    return GestureDetector(
-                onTap: voidCallback,
-                child: Container(
-                  padding: EdgeInsets.only(left: 16, right: 10, top: 11, bottom: 16),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(14),
-                    image: DecorationImage(image: NetworkImage(imageUrl), fit: BoxFit.cover)
-                  ),
-                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child:  Image(image: AssetImage(check == false ? 'assets/interest/uncheck.png': 'assets/interest/check.png'),
-                      height: SizeConfig.imageSizeMultiplier * 6.0,width: SizeConfig.imageSizeMultiplier * 6.0, ),
-                    ),
-                    appText(text: title, fontSize: SizeConfig.textMultiplier * 1.75)
-                  ],
-                 ),
-                ),
-              );
-  }
+ 
 }

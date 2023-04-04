@@ -118,7 +118,12 @@ Widget categoriesTile(
                                  SizedBox(
                                    width: SizeConfig.widthMultiplier * 2.0,
                                  ),
-                                 appText(text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400)
+                                 Container(
+                                  alignment: Alignment.centerLeft,
+                                  width: SizeConfig.widthMultiplier * 40,
+                                   child: appText(maxLines: 1,
+                                    text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400),
+                                 )
                                ],
                              ),
                              Container(

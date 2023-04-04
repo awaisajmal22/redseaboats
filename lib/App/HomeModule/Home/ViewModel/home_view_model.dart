@@ -4,6 +4,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:redseaboats/App/HomeModule/HomeDailog/Model/home_model.dart';
 import 'package:redseaboats/App/HomeModule/Home/Services/home_services.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
@@ -100,15 +101,18 @@ RxBool isDailogCheck = false.obs;
   @override
   void onInit() {
     
-    gethomeData();
+     
     // TODO: implement onInit
     super.onInit();
-    
+  Future.delayed(Duration(
+    seconds: 1
+  ), ()=> gethomeData());
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
 
       showDialog(
         barrierDismissible: false,
         context: Get.overlayContext!, builder: (_){
+          
           return HomeDialog();
       });
     //  Get.defaultDialog(
@@ -135,12 +139,12 @@ AnimationController? animationController;
     super.onClose();
     animationController!.dispose();
   }
-
- RxList<Data> dataList = <Data>[].obs;
+ var dataModel = DataModel().obs;
 
   void gethomeData() async {
-   List<Data> data = await HomeServices().getData();
-   dataList.value = data;
+  var data = await HomeServices().getDataModel();
+   dataModel.value = data;
+  //  print(data.data!.banners!.length);
   }
 List offerList = [
   'assets/home/offers/Offer1.png',

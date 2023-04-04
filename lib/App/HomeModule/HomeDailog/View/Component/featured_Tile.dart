@@ -134,7 +134,7 @@ Widget featuredTile({
                                       borderRadius: BorderRadius.circular(4),
                                       color: AppColor.parrotGreen
                                     ),
-                                    child: appText(text: price, fontSize: SizeConfig.textMultiplier * 1.46, ),
+                                    child: appText(text: "AED $price/hr", fontSize: SizeConfig.textMultiplier * 1.46, ),
                                   )
                                 ],
                               )
@@ -150,4 +150,167 @@ Widget featuredTile({
                 ),
                     ),
   );
+}
+
+Widget shimmerfeaturedTile(
+  
+) {
+  return Container(
+                    margin:  EdgeInsets.symmetric(horizontal:  SizeConfig.widthMultiplier * 2.0),
+                    height: SizeConfig.heightMultiplier * 50,
+                    width: SizeConfig.widthMultiplier * 75,
+                    decoration: BoxDecoration(
+                     
+                      borderRadius: BorderRadius.circular(14),
+                      
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, right: 10),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: AppColor.white,
+                          shape: BoxShape.circle
+                        ),
+                         width: 24, height: 24,),
+                    ),
+                  ),
+                  SizedBox(
+                    height: SizeConfig.heightMultiplier * 1.0,
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding:  EdgeInsets.only(bottom: SizeConfig.heightMultiplier * 2.5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            alignment: Alignment.center,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                topRight: Radius.circular(6),
+                                bottomRight: Radius.circular(6),
+                                
+                              ),
+                              color: AppColor.white
+                            ),
+                            height: SizeConfig.heightMultiplier * 5.0,
+                            width: SizeConfig.widthMultiplier * 37,
+                            
+                          ),
+                           Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          
+                          children: [
+                           Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            height: SizeConfig.heightMultiplier * 2.25,
+                            width: SizeConfig.widthMultiplier * 20,
+                           ),
+                            SizedBox(
+                              height: SizeConfig.heightMultiplier * 0.5,
+                            ),
+                             Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            height: SizeConfig.heightMultiplier *1.46,
+                            width: SizeConfig.widthMultiplier * 25,
+                           ),
+                            SizedBox(
+                              height: SizeConfig.heightMultiplier * 0.5,
+                            ),
+                            Row(
+                              children: [
+                                 Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            height: SizeConfig.heightMultiplier * 1.25,
+                            width: SizeConfig.widthMultiplier * 15,
+                           ),
+                                SizedBox(
+                                  width: SizeConfig.widthMultiplier * 1.0,
+                                ),
+                                 Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            height: SizeConfig.heightMultiplier * 1.25,
+                            width: SizeConfig.widthMultiplier * 5,
+                           ),
+                              ],
+                            ),
+                             SizedBox(
+                              height: SizeConfig.heightMultiplier * 0.5,
+                            ),
+                             Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            height: SizeConfig.heightMultiplier * 1.46,
+                            width: SizeConfig.widthMultiplier * 30,
+                           ),
+                            
+                            SizedBox(
+                              height: SizeConfig.heightMultiplier * 0.9,
+                            ),
+                            
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(FontAwesomeIcons.locationDot, size: SizeConfig.imageSizeMultiplier * 3.0, color: AppColor.white,),
+                                    SizedBox(
+                                      width: SizeConfig.widthMultiplier * 2.0,
+                                    ),
+                                     Container(
+                            decoration: BoxDecoration(
+                              color: AppColor.white,
+                              borderRadius: BorderRadius.circular(8)
+                            ),
+                            height: SizeConfig.heightMultiplier * 1.47,
+                            width: SizeConfig.widthMultiplier * 20,
+                           ),
+                                  ],
+                                ),
+                                Container(
+                                  alignment: Alignment.center,
+                                  padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(4),
+                                    color: AppColor.white
+                                  ),
+                                  height: SizeConfig.heightMultiplier * 1.46,
+                                  width: SizeConfig.widthMultiplier * 10,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                        ],
+                      ),
+                    ),
+                  ),
+                 
+                ],
+              ),
+                  );
 }

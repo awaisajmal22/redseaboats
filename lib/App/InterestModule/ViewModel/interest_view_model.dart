@@ -20,13 +20,12 @@ class InterestViewModel extends GetxController{
   //   InterestModel2(imageUrl: 'https://cdn.pixabay.com/photo/2023/01/07/10/02/leaves-7702922__340.jpg', title: 'Water Sports', check: false.obs),
   // ].obs;
 
-final dataList = [].obs;
   @override
   void onInit() {
    
     // TODO: implement onInit
     super.onInit();
-   fetchinginterestData();
+   Future.delayed(Duration(seconds: 1), ()=> fetchinginterestData());
   }
  RxList<InterestDataModel> newInterestList = <InterestDataModel>[].obs;
  

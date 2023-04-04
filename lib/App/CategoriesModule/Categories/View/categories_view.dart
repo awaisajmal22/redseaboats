@@ -24,29 +24,28 @@ class CategoriesView extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0,vertical: SizeConfig.heightMultiplier * 3.0),
         itemCount: modelList.length,
         itemBuilder: (context, index){
-          return Obx(
-            ()=> categoriesTile(
+          return  categoriesTile(
               categoriesCallback: (){
                 Get.toNamed(AppRoutes.categoriesDetailView, 
                 arguments: [
-                  modelList[index].imageUrl,
-                  modelList[index].favorite
+                  modelList[index].photoUrl,
+                  modelList[index].isLiked
                 ]
                 );
                 print(modelList.length);
               },
               isFavoriteCallback: (){
-                modelList[index].favorite.value = !modelList[index].favorite.value;
+                modelList[index].isLiked = !modelList[index].isLiked;
             }, 
-            isFavorite: modelList[index].favorite.value, 
-            discount: modelList[index].discount, 
+            isFavorite: modelList[index].isLiked, 
+            discount: '30', 
             ratingCallback: (value){}, 
-            initialRating: 3, 
+            initialRating: modelList[index].ratingCount.toDouble(), 
             title: modelList[index].title, 
-            subtitle: modelList[index].subtitle, 
-            location: modelList[index].location, 
-            price: modelList[index].price, 
-            imageUrl: modelList[index].imageUrl),
+            subtitle: modelList[index].status, 
+            location: modelList[index].location.title, 
+            price: '300', 
+            imageUrl: modelList[index].photoUrl
           );
       }),
     );

@@ -6,17 +6,19 @@ import '../../../../Network/api_services.dart';
 import '../Model/home_model.dart';
 
 class HomeServices{
-  Future<List<Data>> getData() async {
-    List<Data> data = [];
+  Future<DataModel> getDataModel() async {
+    DataModel dataModel = DataModel
+    ();
     try{
       var response = await API().getRequest(GetApiUrl.home);
-      print(response.data);
+      print(response.data['data']);
       if(response.statusCode == 200){
-        data = HomeModel.fromJson(response.data).data as List<Data>;
+        
+      dataModel = DataModel.fromJson(response.data['data']);
       }
     } catch (e){
       print(e);
     }
-    return data;
+    return dataModel;
   }
 }
