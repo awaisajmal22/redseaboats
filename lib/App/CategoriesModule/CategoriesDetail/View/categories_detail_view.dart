@@ -22,6 +22,7 @@ class CategoriesDetailView extends StatelessWidget {
   CategoriesDetailView({super.key});
   var imageURl = Get.arguments[0];
   var isFavorite = Get.arguments[1];
+  var galleryPhotoUrls = Get.arguments[2];
   final categoriesDetailVM = Get.find<CategoriesDetailViewModel>();
   @override
   Widget build(BuildContext context) {
@@ -132,7 +133,7 @@ class CategoriesDetailView extends StatelessWidget {
           height: SizeConfig.heightMultiplier * 17.4,
           child: ListView.builder(
               padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5.0),
-              itemCount: 5,
+              itemCount: galleryPhotoUrls.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Container(
@@ -142,9 +143,9 @@ class CategoriesDetailView extends StatelessWidget {
                   width: SizeConfig.widthMultiplier * 34.8,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
-                      image: const DecorationImage(
+                      image: DecorationImage(
                           image: NetworkImage(
-                              'https://cdn.pixabay.com/photo/2018/03/12/04/00/mammal-3218712__340.jpg'),
+                              galleryPhotoUrls[index]),
                           fit: BoxFit.cover)),
                 );
               }),

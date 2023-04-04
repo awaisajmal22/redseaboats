@@ -149,7 +149,7 @@ class CategoryItemDetailView extends StatelessWidget {
                       4,
                       (index) => servicesTile(
                           isFavoriteCallback: () {},
-                          isFavorite: isFavorite.value,
+                          isFavorite: isFavorite,
                           discount: '30',
                           ratingCallback: (value) {},
                           initialRating: 3,

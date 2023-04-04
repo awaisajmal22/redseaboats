@@ -29,7 +29,8 @@ class CategoriesView extends StatelessWidget {
                 Get.toNamed(AppRoutes.categoriesDetailView, 
                 arguments: [
                   modelList[index].photoUrl,
-                  modelList[index].isLiked
+                  modelList[index].isLiked,
+                  modelList[index].galleryPhotoUrls
                 ]
                 );
                 print(modelList.length);

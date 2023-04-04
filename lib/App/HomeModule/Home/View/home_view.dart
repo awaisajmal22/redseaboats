@@ -142,7 +142,9 @@ final favoriteVM = Get.find<FavoriteViewModel>();
                             Get.toNamed(AppRoutes.categoriesView,
                             arguments: [
                               data[index].category.name,
-                              homeVM.dataModel.value.featuredServices,
+                              data,
+                          
+
                             
                             ]
                             );
