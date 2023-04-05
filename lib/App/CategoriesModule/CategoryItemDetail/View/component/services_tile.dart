@@ -47,7 +47,7 @@ Widget servicesTile(
                               child: Image(
                                 image: AssetImage(isFavorite == false ? 'assets/interest/uncheck.png': 'assets/home/icons/heart.png'), width: 24, height: 24,)),
                           ),
-                          Align(
+                      discount == "null" || discount == '' ? SizedBox.shrink() :    Align(
                             alignment: Alignment.centerRight,
                             child: Container(
                                 alignment: Alignment.center,
@@ -74,11 +74,15 @@ Widget servicesTile(
                             mainAxisAlignment: MainAxisAlignment.end,
                             
                             children: [
-                         appText(text: title, fontSize: SizeConfig.textMultiplier * 2.25, textAlign: TextAlign.left),
+                         appText(
+                          maxLines: 1,
+                          text: title, fontSize: SizeConfig.textMultiplier * 2.25, textAlign: TextAlign.left),
                          SizedBox(
                            height: SizeConfig.heightMultiplier * 0.3,
                          ),
-                         appText(text: subtitle, fontSize: SizeConfig.textMultiplier * 1.46, fontWeight: FontWeight.normal, textAlign: TextAlign.left),
+                         appText(
+                          maxLines: 1,
+                          text: subtitle, fontSize: SizeConfig.textMultiplier * 1.46, fontWeight: FontWeight.normal, textAlign: TextAlign.left),
                          SizedBox(
                            height: SizeConfig.heightMultiplier * 0.3,
                          ),
@@ -100,7 +104,12 @@ Widget servicesTile(
                              SizedBox(
                                width: SizeConfig.widthMultiplier * 1.0,
                              ),
-                             appText(text: '2958', fontSize: SizeConfig.textMultiplier * 1.25, fontWeight: FontWeight.w400)
+                             SizedBox(
+                              width: SizeConfig.widthMultiplier * 10,
+                              child: appText(
+                                textAlign: TextAlign.left,
+                                maxLines: 1,
+                                text: '2958', fontSize: SizeConfig.textMultiplier * 1.25, fontWeight: FontWeight.w400))
                            ],
                          ),
                           SizedBox(
@@ -118,7 +127,12 @@ Widget servicesTile(
                                  SizedBox(
                                    width: SizeConfig.widthMultiplier * 2.0,
                                  ),
-                                 appText(text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400)
+                                 SizedBox(
+                                  width: SizeConfig.widthMultiplier * 40,
+                                  child: appText(
+                                    textAlign: TextAlign.left,
+                                    maxLines: 1,
+                                    text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400))
                                ],
                              ),
                              Container(

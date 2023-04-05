@@ -12,7 +12,7 @@ Widget anemitiesTile({
       children: [
         Column(
                       children: [
-                        Image(image: AssetImage(imageUrl),
+                        Image(image: NetworkImage(imageUrl),
                       height: SizeConfig.heightMultiplier * 5.6,
                       width: SizeConfig.widthMultiplier * 11.2,
                         ),

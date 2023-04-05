@@ -14,7 +14,7 @@ Widget categoryTile({
     return GestureDetector(
       onTap: categoriesCallBack,
       child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: index == length - 1 ? 0 : SizeConfig.widthMultiplier * 2.6),
+                  margin: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 2.6),
                   height: SizeConfig.heightMultiplier * 11.12,
                   child: Column(
                     children: [
@@ -29,7 +29,12 @@ Widget categoryTile({
                       SizedBox(
                         height: SizeConfig.heightMultiplier * 1.0,
                       ),
-                      appText(text: title,fontSize:  SizeConfig.textMultiplier * 1.4, textColor: AppColor.textBlack)
+                      SizedBox(
+                        width: SizeConfig.widthMultiplier * 16.0,
+                        child: appText(
+                          maxLines: 1,
+                          text: title,fontSize:  SizeConfig.textMultiplier * 1.4, textColor: AppColor.textBlack),
+                      )
                     ],
                   ),
                 ),

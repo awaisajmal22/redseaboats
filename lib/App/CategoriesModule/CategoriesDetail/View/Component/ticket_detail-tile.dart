@@ -23,6 +23,9 @@ Widget ticketDetailTile(
       required String itemCount,
       required VoidCallback moreServicesCallBack,
       required List durationList,
+      required String rating,
+      required String totalLikes,
+      required String locationtitle,
       required String noOfPerson}) {
     return Container(
       padding: EdgeInsets.symmetric(
@@ -46,10 +49,15 @@ Widget ticketDetailTile(
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              appText(
-                  text: title,
-                  fontSize: SizeConfig.textMultiplier * 2.25,
-                  textColor: AppColor.textBlack),
+              SizedBox(
+                width: SizeConfig.widthMultiplier * 40,
+                child: appText(
+                  textAlign: TextAlign.left,
+                  maxLines: 1,
+                    text: title,
+                    fontSize: SizeConfig.textMultiplier * 2.25,
+                    textColor: AppColor.textBlack),
+              ),
               Container(
                 alignment: Alignment.center,
                 padding: EdgeInsets.symmetric(vertical: 4, horizontal: 6),
@@ -114,11 +122,16 @@ Widget ticketDetailTile(
                     SizedBox(
                       height: SizeConfig.heightMultiplier * 0.2,
                     ),
-                    appText(
-                        text: 'Dubai Water Sports',
-                        fontWeight: FontWeight.w500,
-                        textColor: AppColor.textBlack,
-                        fontSize: SizeConfig.textMultiplier * 1.5),
+                    SizedBox(
+                      width: SizeConfig.widthMultiplier * 40,
+                      child: appText(
+                        textAlign: TextAlign.left,
+                        maxLines: 1,
+                          text: locationtitle,
+                          fontWeight: FontWeight.w500,
+                          textColor: AppColor.textBlack,
+                          fontSize: SizeConfig.textMultiplier * 1.5),
+                    ),
                   ],
                 ),
               ),
@@ -264,7 +277,7 @@ Widget ticketDetailTile(
               itemCount: amenitiesList.length,
               itemBuilder: (context, index){
               return anemitiesTile(
-                      imageUrl: amenitiesList[index].imageUrl,
+                      imageUrl: amenitiesList[index].photoUrl,
                       name: amenitiesList[index].name);
             }),
           ),
@@ -302,7 +315,7 @@ Widget ticketDetailTile(
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    appText(text: '4.8', textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.5, fontWeight: FontWeight.w400),
+                    appText(text: rating, textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.5, fontWeight: FontWeight.w400),
                     SizedBox(
                       width: SizeConfig.widthMultiplier * 1.0,
                     ),
@@ -326,7 +339,11 @@ Widget ticketDetailTile(
                 ),
                 Row(
                   children: [
-                    appText(text: '12', textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.5, fontWeight: FontWeight.w400),
+                    SizedBox(
+                      width: SizeConfig.widthMultiplier * 10,
+                      child: appText(
+                        maxLines: 1,
+                        text: totalLikes, textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.5, fontWeight: FontWeight.w400)),
                     SizedBox(
                       width: SizeConfig.widthMultiplier * 1.0,
                     ),

@@ -48,7 +48,7 @@ Widget interestTile({
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          AnimatedContainer(
+                    discount == 'null' || discount == '' ? const SizedBox.shrink() : AnimatedContainer(
                             alignment: Alignment.bottomLeft,
                             duration: const Duration(seconds: 1),
                             height: isDailogCheck == true ? SizeConfig.heightMultiplier * 5.0 : SizeConfig.heightMultiplier * 10,
@@ -125,7 +125,9 @@ Widget interestTile({
                                SizedBox(
                                 height: SizeConfig.heightMultiplier * 0.5,
                               ),
-                              appText(text: description, fontSize:SizeConfig.textMultiplier * 1.46, fontWeight: FontWeight.w400,textAlign: TextAlign.left, textOverFlow: TextOverflow.ellipsis ),
+                              appText(
+                                maxLines: 2,
+                                text: description, fontSize:SizeConfig.textMultiplier * 1.46, fontWeight: FontWeight.w400,textAlign: TextAlign.left, textOverFlow: TextOverflow.ellipsis ),
                               SizedBox(
                                 height: SizeConfig.heightMultiplier * 0.9,
                               ),
@@ -140,9 +142,13 @@ Widget interestTile({
                                       SizedBox(
                                         width: SizeConfig.widthMultiplier * 2.0,
                                       ),
-                                      appText(
-                                        maxLines: 30,
-                                        text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400)
+                                      SizedBox(
+                                        width: SizeConfig.widthMultiplier * 40,
+                                        child: appText(
+                                          textAlign: TextAlign.left,
+                                          maxLines: 1,
+                                          text: location, fontSize: SizeConfig.textMultiplier * 1.47, fontWeight: FontWeight.w400),
+                                      )
                                     ],
                                   ),
                                   Container(

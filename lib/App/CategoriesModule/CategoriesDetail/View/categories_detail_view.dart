@@ -20,9 +20,9 @@ import 'Component/ticket_detail-tile.dart';
 
 class CategoriesDetailView extends StatelessWidget {
   CategoriesDetailView({super.key});
-  var imageURl = Get.arguments[0];
-  var isFavorite = Get.arguments[1];
-  var galleryPhotoUrls = Get.arguments[2];
+  var data = Get.arguments[0];
+  var slotData = Get.arguments[1];
+  var modelList = Get.arguments[2];
   final categoriesDetailVM = Get.find<CategoriesDetailViewModel>();
   @override
   Widget build(BuildContext context) {
@@ -49,6 +49,7 @@ class CategoriesDetailView extends StatelessWidget {
           )),
       ),
         body: ListView(
+          controller: categoriesDetailVM.controller,
       padding: const EdgeInsets.only(top: 0),
       children: [
         SizedBox(
@@ -61,32 +62,38 @@ class CategoriesDetailView extends StatelessWidget {
                 left: 0,
                 right: 0,
                 child:  backgroundImageTile(
-                      imageUrl: imageURl,
-                      isFavorite: isFavorite,
+                      imageUrl: data.photoUrl,
+                      isFavorite: data.isLiked,
                       favoriteCallback: () {
-                        isFavorite = !isFavorite;
+                        data.isLiked = !data.isLiked;
                       }),
               ),
               ticketDetailTile(
-                amenitiesList: categoriesDetailVM.amenitiesList,
+                totalLikes: data.likes[0],
+                rating: data.rating.toString(),
+                locationtitle: data.location.title,
+                amenitiesList: data.amenities,
                 selectedDurationIndex: categoriesDetailVM.selectedDurationIndex,
                 noOfPerson: '4',
                 itemCount: '02',
-                title: 'Dhow Curise',
-                price: '420',
-                initialRating: 3,
+                title: data.title,
+                price: slotData.price.toString(),
+                initialRating: data.rating.toDouble(),
                 ratingCallback: (value) {},
-                totalRating: '2958',
-                decreamentCallback: () {},
+                totalRating: data.totalRating.toString(),
+                decreamentCallback: () {
+                },
                 itemDetailCallBack: () {
                   print('object');
                   Get.toNamed(AppRoutes.categoryItemDetailView, arguments: [
-                    imageURl,
-                    isFavorite
+                    data,
+                    modelList
                   ]);
                 },
                 increamentCallback: () {},
-                moreServicesCallBack: () {},
+                moreServicesCallBack: () {
+                  categoriesDetailVM.scrollDown();
+                },
                 durationList: categoriesDetailVM.durationList,
               ),
             ],
@@ -133,7 +140,7 @@ class CategoriesDetailView extends StatelessWidget {
           height: SizeConfig.heightMultiplier * 17.4,
           child: ListView.builder(
               padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5.0),
-              itemCount: galleryPhotoUrls.length,
+              itemCount: data.galleryPhotoUrls.length,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
                 return Container(
@@ -145,7 +152,7 @@ class CategoriesDetailView extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10),
                       image: DecorationImage(
                           image: NetworkImage(
-                              galleryPhotoUrls[index]),
+                              data.galleryPhotoUrls[index]),
                           fit: BoxFit.cover)),
                 );
               }),
@@ -211,13 +218,16 @@ appText(
                    child: ListView.builder(
                     padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 5.0),
                     scrollDirection: Axis.horizontal,
-                    itemCount: 4,
+                    itemCount: modelList.length,
                     itemBuilder: (context, index){
-                    return Container(
+                      var dataofModelList = modelList[index];
+                      for(int i=0; i<dataofModelList.slots.length; i++) {
+                        return Container(
                       margin: EdgeInsets.only(right: SizeConfig.widthMultiplier * 5.0),
                       child: categoriesTile(isFavoriteCallback: (){}, 
-                      isFavorite: isFavorite,discount: '30', ratingCallback: (value){}, initialRating: 3, title: 'title', subtitle: 'subtitle', location: 'location', price: 'price', imageUrl: imageURl, categoriesCallback: (){}),
+                      isFavorite:dataofModelList.isLiked,discount: dataofModelList.slots[i].discount.discountPercentage.toString(), ratingCallback: (value){}, initialRating: 3, title:dataofModelList.title, subtitle:dataofModelList.location.title, location:dataofModelList.location.streetAddress, price: dataofModelList.slots[i].price.toString(), imageUrl:dataofModelList.photoUrl, categoriesCallback: (){}),
                     );
+                      }
                    }),
                   ),
                   SizedBox(

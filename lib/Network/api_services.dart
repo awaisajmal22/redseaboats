@@ -343,7 +343,7 @@ print(apiurl);
         data: data,
         options: DIO.Options(headers: {
           'Content-type': 'application/json',
-          'Accept': 'application/json',
+          'Accept': '*/*',
           "Authorization": "Bearer ${token.toString()}",
         }),
         onSendProgress: (int sent, int total) {

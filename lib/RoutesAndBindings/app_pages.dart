@@ -117,6 +117,7 @@ class AppPages{
           Get.lazyPut(() => BookingViewModel());
           Get.lazyPut(() => ChatViewModel());
           Get.lazyPut(() => FavoriteViewModel());
+          Get.lazyPut(() => CategoriesViewModel());
         })),
         
          GetPage(

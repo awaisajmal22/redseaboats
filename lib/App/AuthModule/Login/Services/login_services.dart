@@ -21,9 +21,10 @@ Future<bool?> onlogin({
     if(response == null){
       print('Error');
     }else if(response.data["isSuccess"] == true){
+      print(response.data['data']['token']['accessToken']);
       GetStorageHandler handler = GetStorageHandler();
       isSuccess = response.data["isSuccess"];
-      await handler.setToken(response.data["token"]);
+      await handler.setToken(response.data['data']['token']['accessToken']);
       ShowMessage().showMessage(response.data["message"].toString());
     }
     else{

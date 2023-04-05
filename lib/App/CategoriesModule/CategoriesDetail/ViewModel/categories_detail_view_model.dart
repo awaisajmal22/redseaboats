@@ -30,4 +30,15 @@ List<ExpactModel> expactList = <ExpactModel>[
   ExpactModel(check: false, title: 'Foto'),
 
 ];
+
+final ScrollController controller = ScrollController();
+
+// This is what you're looking for!
+void scrollDown() {
+  controller.animateTo(
+    controller.position.maxScrollExtent,
+    duration: Duration(seconds: 2),
+    curve: Curves.fastOutSlowIn,
+  );
+}
 }
