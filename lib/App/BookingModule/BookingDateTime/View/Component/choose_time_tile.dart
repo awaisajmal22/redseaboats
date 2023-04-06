@@ -8,7 +8,8 @@ Widget chooseTimeTile({
     required VoidCallback voidCallback,
     required int index,
     required int selectedIndex,
-    required String time
+    required String starttime,
+    required String endtime
   }) {
     return GestureDetector(
       onTap: voidCallback,
@@ -23,7 +24,7 @@ Widget chooseTimeTile({
                     color: selectedIndex == index ? AppColor.parrotGreen : AppColor.whiteFC,
                     borderRadius: BorderRadius.circular(5)
                   ),
-                  child: appText(text: time, textColor: selectedIndex == index ? AppColor.white : AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.5, fontWeight: FontWeight.w500),
+                  child: appText(text: '${starttime} to ${endtime}', textColor: selectedIndex == index ? AppColor.white : AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 1.5, fontWeight: FontWeight.w500),
                 ),
     );
   }

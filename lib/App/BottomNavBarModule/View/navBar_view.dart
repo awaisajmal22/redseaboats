@@ -24,7 +24,7 @@ final navBarVM = Get.find<NavBarViewModel>();
         children: [
           HomeView(),
           BookingView(),
-          const NearByView(),
+          NearByView(),
           ChatView(),
           const ProfileView(),
 

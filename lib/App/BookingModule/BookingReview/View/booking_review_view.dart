@@ -18,7 +18,9 @@ import 'component/membership_discount_tile.dart';
 import 'component/review_info_card_tile.dart';
 
 class BookingReviewView extends StatelessWidget {
-  const BookingReviewView({super.key});
+   BookingReviewView({super.key});
+  var data = Get.arguments[0];
+  var selectedTime = Get.arguments[1];
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +65,7 @@ class BookingReviewView extends StatelessWidget {
                     ),
                     dateTimeInfoTile(
                       iconUrl: 'assets/booking/icons/clock.png',
-                title: '5:00 PM to 6:00 PM'
+                title: selectedTime.toString()
                     ),
                   ],
                 ),
@@ -85,7 +87,7 @@ class BookingReviewView extends StatelessWidget {
                 ),
                  infoTile(
                 iconUrl: 'assets/booking/icons/sms.png',
-                title: 'confirmation@info.com'),
+                title: 'data.location.email'),
             infoTile(
                 iconUrl: 'assets/booking/icons/call.png',
                 title: '+97463727273743',

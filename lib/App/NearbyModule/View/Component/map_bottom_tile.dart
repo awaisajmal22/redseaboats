@@ -12,15 +12,95 @@ Widget mapBottomTile({
     required double initialRating,
     required Function(double?)? onratingupdate,
     required String totalRating,
-    required String locationName
+    required String locationName,
+    required VoidCallback voidCallback
   }) {
+    return GestureDetector(
+      onTap: voidCallback,
+      child: Container(
+                        padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 1.4, vertical: SizeConfig.heightMultiplier * 1.0),
+                        margin: EdgeInsets.only( right: SizeConfig.widthMultiplier * 5.6),
+                        height: SizeConfig.heightMultiplier * 11.1,
+                        width: SizeConfig.widthMultiplier * 75.8,
+                        decoration: BoxDecoration(
+                          color: AppColor.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: AppColor.textGrey.withOpacity(0.15),
+                              offset: Offset(0, 8),
+                              blurRadius: 15
+                            )
+                          ]
+                        ),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(4),
+                              child: Image(image: NetworkImage(imageUrl), height: SizeConfig.heightMultiplier * 11.1,
+                              width: SizeConfig.widthMultiplier * 18, fit: BoxFit.cover,),
+                            ),
+                            SizedBox(
+                              width: SizeConfig.widthMultiplier * 3.0,
+                            ),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                appText(
+                                  maxLines: 1,
+                                  textAlign: TextAlign.left,
+                                  text: title, textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 2.0),
+                                Row(
+                                  children: [
+                                    RatingBar.builder(
+                                  itemSize: SizeConfig.imageSizeMultiplier * 3.0,
+                                  initialRating: initialRating,
+                                  minRating: 1,
+                                  maxRating: 5,
+                                  itemBuilder: (context, index){
+                                  return Icon(Icons.star, color: Color(0xffFDB515));
+                                }, 
+                                onRatingUpdate: onratingupdate as double? Function(double?)
+                                ),
+                                SizedBox(
+                                  width: SizeConfig.widthMultiplier * 1.2,
+                                ), 
+                                appText(text: totalRating, fontSize: SizeConfig.textMultiplier * 1.15, textColor: AppColor.textBlack, fontWeight: FontWeight.w400)
+    
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(FontAwesomeIcons.locationDot, color: AppColor.parrotGreen, size: SizeConfig.imageSizeMultiplier * 3.0,),
+                                    SizedBox(
+                                    width: SizeConfig.widthMultiplier * 1.4,
+                                    ),
+                                    SizedBox(
+                                      width: SizeConfig.widthMultiplier * 40,
+                                      child: appText(
+                                        maxLines: 1,
+                                        textAlign: TextAlign.left,
+                                        text: locationName, fontSize: SizeConfig.textMultiplier * 1.5, textColor: AppColor.textGrey, fontWeight: FontWeight.w500),
+                                    )
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+    );
+  }
+
+  Widget shimmerMapBottomTile() {
     return Container(
                       padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 1.4, vertical: SizeConfig.heightMultiplier * 1.0),
                       margin: EdgeInsets.only( right: SizeConfig.widthMultiplier * 5.6),
                       height: SizeConfig.heightMultiplier * 11.1,
                       width: SizeConfig.widthMultiplier * 75.8,
                       decoration: BoxDecoration(
-                        color: AppColor.white,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
@@ -33,10 +113,13 @@ Widget mapBottomTile({
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          ClipRRect(
+                          Container(
+                             height: SizeConfig.heightMultiplier * 11.1,
+                          width: SizeConfig.widthMultiplier * 18, 
+                          decoration: BoxDecoration(
+                            color: AppColor.white,
                             borderRadius: BorderRadius.circular(4),
-                            child: Image(image: NetworkImage(imageUrl), height: SizeConfig.heightMultiplier * 11.1,
-                            width: SizeConfig.widthMultiplier * 18, fit: BoxFit.cover,),
+                          ),
                           ),
                           SizedBox(
                             width: SizeConfig.widthMultiplier * 3.0,
@@ -45,38 +128,43 @@ Widget mapBottomTile({
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              appText(text: title, textColor: AppColor.textBlack, fontSize: SizeConfig.textMultiplier * 2.0),
-                              Row(
-                                children: [
-                                  RatingBar.builder(
-                                itemSize: SizeConfig.imageSizeMultiplier * 3.0,
-                                initialRating: initialRating,
-                                minRating: 1,
-                                maxRating: 5,
-                                itemBuilder: (context, index){
-                                return Icon(Icons.star, color: Color(0xffFDB515));
-                              }, 
-                              onRatingUpdate: onratingupdate as double? Function(double?)
+                              Container(
+                                decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                                height: SizeConfig.heightMultiplier * 1.0,
+                                width:  SizeConfig.widthMultiplier * 10,
                               ),
-                              SizedBox(
-                                width: SizeConfig.widthMultiplier * 1.2,
-                              ), 
-                              appText(text: totalRating, fontSize: SizeConfig.textMultiplier * 1.15, textColor: AppColor.textBlack, fontWeight: FontWeight.w400)
-
-                                ],
+                              Container(
+                                decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                                height: SizeConfig.heightMultiplier * 1.0,
+                                width: SizeConfig.widthMultiplier * 20,
                               ),
-                              Row(
+    Row(
                                 children: [
                                   Icon(FontAwesomeIcons.locationDot, color: AppColor.parrotGreen, size: SizeConfig.imageSizeMultiplier * 3.0,),
                                   SizedBox(
                                   width: SizeConfig.widthMultiplier * 1.4,
                                   ),
-                                  appText(text: locationName, fontSize: SizeConfig.textMultiplier * 1.5, textColor: AppColor.textGrey, fontWeight: FontWeight.w500)
+                                  Container(
+                                    decoration: BoxDecoration(
+                            color: AppColor.white,
+                            borderRadius: BorderRadius.circular(4),
+                          ),
+                                    width: SizeConfig.widthMultiplier * 30,
+                                   height: SizeConfig.heightMultiplier * 1.0,
+                                  )
                                 ],
                               )
+                                ],
+                              ),
+                              
                             ],
                           )
-                        ],
-                      ),
+                        
                     );
   }

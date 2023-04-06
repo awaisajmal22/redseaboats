@@ -152,7 +152,7 @@ class BookingDetailView extends StatelessWidget {
               itemCount: bookingDetailVM.amenitiesList.length,
               itemBuilder: (context, index){
               return anemitiesTile(
-                      imageUrl: bookingDetailVM.amenitiesList[index].imageUrl,
+                      imageUrl:'https://images.pexels.com/photos/13733057/pexels-photo-13733057.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load',
                       name: bookingDetailVM.amenitiesList[index].name);
             }),
             ),

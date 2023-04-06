@@ -9,6 +9,7 @@ Widget expectionTile({
     required String title,
   }) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                          check  == true
@@ -25,7 +26,12 @@ Widget expectionTile({
                                 SizedBox(
                                   width: SizeConfig.widthMultiplier * 3,
                                 ),
-                                appText(text: title, textColor: AppColor.textGrey, fontSize: SizeConfig.textMultiplier * 1.6, fontWeight:  FontWeight.w400)
+                                Expanded(
+                                  child: appText(
+                                    maxLines: 20,
+                                    textAlign: TextAlign.left,
+                                    text: title, textColor: AppColor.textGrey, fontSize: SizeConfig.textMultiplier * 1.6, fontWeight:  FontWeight.w400),
+                                )
                         ],
                       );
   }

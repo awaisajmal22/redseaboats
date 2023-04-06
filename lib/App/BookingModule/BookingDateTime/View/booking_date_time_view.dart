@@ -12,6 +12,7 @@ import 'package:redseaboats/Common/AppButton/app_button.dart';
 import 'package:redseaboats/Common/AppColors/app_colors.dart';
 import 'package:redseaboats/Common/AppText/appText.dart';
 import 'package:redseaboats/Common/SizeConfig/size_config.dart';
+import 'package:redseaboats/Common/toast.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 import '../../../../RoutesAndBindings/app_routes.dart';
@@ -23,6 +24,7 @@ class BookingDateTimeView extends StatelessWidget {
   BookingDateTimeView({super.key});
   final bookingDateTimeVM = Get.find<BookingDateTimeViewModel>();
   final homeVM = Get.find<HomeViewModel>();
+  var data = Get.arguments[0];
 
   @override
   Widget build(BuildContext context) {
@@ -101,19 +103,24 @@ class BookingDateTimeView extends StatelessWidget {
             child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 padding: EdgeInsets.only(left: SizeConfig.widthMultiplier * 3),
-                itemCount: bookingDateTimeVM.timeList.length,
+                itemCount: data.timings.length,
                 itemBuilder: (context, index) {
-                  return Obx(
+                  
+                  
+                    return Obx(
                     () => chooseTimeTile(
-                        time: bookingDateTimeVM.timeList[index],
+                        starttime: data.timings[index].min.toString(),
+                        endtime: data.timings[index].max.toString(),
                         index: index,
                         selectedIndex:
                             bookingDateTimeVM.selectedTimeIndex.value,
                         voidCallback: () {
                           bookingDateTimeVM.selectedTimeIndex.value = index;
+                          bookingDateTimeVM.selectedTime.value = '${data.timings[index].min.toString()} to ${data.timings[index].max.toString()}';
                         }),
                   );
-                }),
+                  }
+                ),
           ),
           SizedBox(
             height: SizeConfig.heightMultiplier * 3.0,
@@ -122,13 +129,21 @@ class BookingDateTimeView extends StatelessWidget {
               butonWidth: SizeConfig.widthMultiplier * 100,
               buttonHeight: SizeConfig.heightMultiplier * 6.8,
               voidCallback: () {
-                Get.back();
-                bottomSheet(
+              
+                if(bookingDateTimeVM.selectedTime.value == ''){
+                  ShowMessage().showErrorMessage('Please Select Your Time');
+                }else { 
+                   Get.back();
+                  bottomSheet(
                     continueCallback: () {
-                      Get.toNamed(AppRoutes.bookingReview);
+                      Get.toNamed(AppRoutes.bookingReview, arguments: [
+                        data,
+                        bookingDateTimeVM.selectedTime
+                      ]);
                     },
                     emiratesIdCallback: () {},
                     passportCallback: () {});
+                }
               },
               widget: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

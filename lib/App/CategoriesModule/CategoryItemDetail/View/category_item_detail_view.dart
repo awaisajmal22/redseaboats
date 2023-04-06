@@ -150,31 +150,29 @@ class CategoryItemDetailView extends StatelessWidget {
           SizedBox(
             height: SizeConfig.heightMultiplier * 2.0,
           ),
-          Expanded(
-            child: ListView.builder(
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
-              itemCount: moreSellData.length,
-              itemBuilder: (contex, index) {
-                var allserviceData = moreSellData[index];
-                for(int i = 0; i< moreSellData[index].slots.length; i++) {
-                  return servicesTile(
-                    isFavoriteCallback: () {},
-                    isFavorite: allserviceData.isLiked,
-                    discount: allserviceData.slots[i].discount.discountPercentage.toString(),
-                    ratingCallback: (value) {},
-                    initialRating: 3,
-                    title: allserviceData.title,
-                    subtitle: allserviceData.location.title,
-                    location: allserviceData.location.streetAddress,
-                    price: 'price',
-                    imageUrl: allserviceData.photoUrl,
-                    categoriesCallback: () {});
-                }
-              
-              }),
-          )
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            padding: EdgeInsets.symmetric(horizontal: SizeConfig.widthMultiplier * 5.0),
+            itemCount: moreSellData.length,
+            itemBuilder: (contex, index) {
+              var allserviceData = moreSellData[index];
+              for(int i = 0; i< moreSellData[index].slots.length; i++) {
+                return servicesTile(
+                  isFavoriteCallback: () {},
+                  isFavorite: allserviceData.isLiked,
+                  discount: allserviceData.slots[i].discount.discountPercentage.toString(),
+                  ratingCallback: (value) {},
+                  initialRating: 3,
+                  title: allserviceData.title,
+                  subtitle: allserviceData.location.title,
+                  location: allserviceData.location.streetAddress,
+                  price: 'price',
+                  imageUrl: allserviceData.photoUrl,
+                  categoriesCallback: () {});
+              }
+            
+            })
         ],
       ),
     );

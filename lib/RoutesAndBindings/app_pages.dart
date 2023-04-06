@@ -27,6 +27,7 @@ import 'package:redseaboats/App/HomeModule/HomeDailog/View/home_dailog_view.dart
 import 'package:redseaboats/App/HomeModule/Home/View/home_view.dart';
 import 'package:redseaboats/App/HomeModule/Home/ViewModel/home_view_model.dart';
 import 'package:redseaboats/App/MembershipModule/Membership/ViewModel/membership_view_model.dart';
+import 'package:redseaboats/App/NearbyModule/ViewModel/nearby_view_model.dart';
 import 'package:redseaboats/App/NotificationModule/View/notification_view.dart';
 import 'package:redseaboats/App/NotificationModule/ViewModel/notification_view_model.dart';
 import 'package:redseaboats/App/OnBoardingModule/View/onboarding_view.dart';
@@ -118,6 +119,7 @@ class AppPages{
           Get.lazyPut(() => ChatViewModel());
           Get.lazyPut(() => FavoriteViewModel());
           Get.lazyPut(() => CategoriesViewModel());
+          Get.lazyPut(() => NearbyViewModel());
         })),
         
          GetPage(
